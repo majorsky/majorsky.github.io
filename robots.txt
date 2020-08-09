@@ -1,0 +1,17 @@
+User-agent:*
+Host: majorsky.ru
+Disallow: /contactform/
+Disallow: /css/
+Disallow: /img/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /html/contactform/
+Disallow: /html/css/
+Disallow: /html/img/
+Disallow: /html/js/
+Disallow: /html/lib/
+Disallow: /blogcss/css/
+Disallow: /blogcss/img/
+Disallow: /blogcss/js/
+Disallow: /blogcss/lib/
+Sitemap: https://majorsky.ru/sitemap.xml

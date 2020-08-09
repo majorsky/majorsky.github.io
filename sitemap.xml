@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://majorsky.ru/</loc>
+	<lastmod>2020-07-05T17:05:14+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/html/index.html</loc>
+	<lastmod>2020-07-05T17:05:15+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/index.html</loc>
+	<lastmod>2020-07-05T17:05:28+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/html/whatsapp.html</loc>
+	<lastmod>2020-07-05T17:05:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/video/index.html</loc>
+	<lastmod>2020-07-05T17:05:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/blogcss/examples.html</loc>
+	<lastmod>2020-07-05T17:05:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/blogcss/button.html</loc>
+	<lastmod>2020-07-05T17:05:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://majorsky.ru/blogcss/index.html</loc>
+	<lastmod>2020-07-05T17:05:29+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+</urlset>
