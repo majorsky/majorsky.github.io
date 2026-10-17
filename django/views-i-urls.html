@@ -8,7 +8,8 @@
   <link rel="canonical" href="https://majorsky.ru/django/views-i-urls.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Сергей Герасимов">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="geo.region" content="RU-MOS">
+  <meta name="geo.placename" content="Домодедово">
   <meta name="google-site-verification" content="tKtWNXcnSiuNHBDz3rdULe91zQbMqUmTJScr9RaGvlM" />
   <meta name="yandex-verification" content="04fe22676397dea3" />
   <meta property="og:type" content="article">
@@ -19,19 +20,18 @@
   <meta property="og:url" content="https://majorsky.ru/django/views-i-urls.html">
   <meta property="og:image" content="https://majorsky.ru/assets/img/msky-code.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
-  <link href="../html/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../html/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../html/lib/animate/animate.min.css" rel="stylesheet">
-  <link href="../html/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="../html/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="../html/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-  <link href="../html/css/style.css" rel="stylesheet">
-  <link href="../html/css/form.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
   <!-- AdSense убран: рекламных блоков на сайте нет -->
   <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
@@ -69,30 +69,18 @@
   </script>
 </head>
 <body>
-  <header id="header">
-    <div id="topbar">
-      <div class="container">
-        <div class="social-links">
-          <i class="ion-ios-telephone">&nbsp;&nbsp;<b><span class="reverse">85-68-111 (629) 7+</span></b></i>
-          <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-          <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-          <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="logo float-left">
-        <a href="../index.html" class="scrollto"><img src="../html/img/logo.png" alt="MAJORSKY.RU — на главную" class="img-fluid"></a>
-      </div>
-      <nav class="main-nav float-right d-none d-lg-block" aria-label="Основная навигация">
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo"><h1><a href="../index.html"><span>WWW.MAJORSKY.RU</span></a></h1></div>
+      <nav id="navbar" class="navbar" aria-label="Основная навигация">
         <ul>
-          <li class="active"><a href="../index.html#hero">ГЛАВНАЯ</a></li>
-          <li><a href="../index.html#about">ОБО МНЕ</a></li>
-          <li><a href="../index.html#features">УСЛУГИ</a></li>
-          <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
-          <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
-          <li><a href="../index.html#team">КОМАНДА</a></li>
-          <li class="drop-down"><a href="#">БЛОГ</a>
+          <li><a class="nav-link" href="../index.html#hero">ГЛАВНАЯ</a></li>
+          <li><a class="nav-link" href="../index.html#about">ОБО МНЕ</a></li>
+          <li><a class="nav-link" href="../index.html#features">УСЛУГИ</a></li>
+          <li><a class="nav-link" href="../index.html#gallery">ПОРТФОЛИО</a></li>
+          <li><a class="nav-link" href="../index.html#team">КОМАНДА</a></li>
+          <li><a class="nav-link" href="../index.html#pricing">ЦЕНЫ</a></li>
+          <li class="dropdown"><a href="#"><span>БЛОГ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="../html/index.html">Про HTML</a></li>
               <li><a href="../blogcss/index.html">Про CSS</a></li>
@@ -100,68 +88,79 @@
               <li><a href="../video/index.html">Видео</a></li>
             </ul>
           </li>
-          <li><a href="../index.html#contact">КОНТАКТЫ</a></li>
+          <li><a class="nav-link" href="../index.html#contact">КОНТАКТЫ</a></li>
         </ul>
+        <i class="bi bi-list mobile-nav-toggle" role="button" tabindex="0" aria-label="Открыть меню"></i>
       </nav>
     </div>
   </header>
 
-  <section id="intro" class="clearfix">
-    <div class="container d-flex h-100">
-      <div class="row justify-content-center align-self-center">
-        <div class="col-md-6 intro-info order-md-first order-last">
-          <h2>VIEWS И URL В DJANGO: <span>МАРШРУТИЗАЦИЯ</span></h2>
+  <section id="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out">
+            <h1>VIEWS И URL <span>В DJANGO</span></h1>
+            <h2>МАРШРУТИЗАЦИЯ И ШАБЛОНЫ</h2>
+            <div class="text-center text-lg-start">
+              <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 intro-img order-md-last order-first">
-          <img src="../html/img/intro-img.svg" alt="Маршрутизация и представления в Django" class="img-fluid">
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Маршрутизация и представления в Django">
         </div>
       </div>
     </div>
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+    </svg>
   </section>
 
   <main id="main">
-    <section id="about">
+    <section id="article" class="about">
       <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Views и URL в Django</h2>
+          <p>Маршруты, представления, шаблоны</p>
+        </div>
         <div class="row">
-          <div class="col-lg-8 col-md-10">
-            <div class="about-content">
-              <h2>Как Django обрабатывает запрос</h2>
+          <div class="col-lg-10 mx-auto">
+            <div class="about-content" data-aos="fade-up">
+              <h3>Как Django обрабатывает запрос</h3>
               <p>Цепочка простая: браузер запрашивает адрес, Django ищет его в <code>urls.py</code> сверху вниз, вызывает найденное представление, а то возвращает ответ — HTML, редирект или JSON. Если совпадения нет, отдаётся 404.</p>
 
-              <h2>Первое представление</h2>
-              <p>Создайте файл <code>blog/views.py</code> и добавьте функцию. Представление — это обычная функция Python, которая принимает запрос:</p>
-              <p class="ex">from django.http import HttpResponse<br><br>def index(request):<br>&nbsp;&nbsp;&nbsp;&nbsp;return HttpResponse("Привет, мир")</p>
+              <h3>Первое представление</h3>
+              <p>Создайте файл <code>blog/views.py</code> и добавьте функцию. Представление — это обычная функция Python, которая принимает запрос и возвращает ответ: <code>def index(request): return HttpResponse("Привет, мир")</code>.</p>
 
-              <h2>Маршрут</h2>
+              <h3>Маршрут</h3>
               <p>Теперь свяжите функцию с адресом в <code>config/urls.py</code>:</p>
               <p class="ex">from django.urls import path<br>from blog import views<br><br>urlpatterns = [<br>&nbsp;&nbsp;&nbsp;&nbsp;path("", views.index, name="index"),<br>&nbsp;&nbsp;&nbsp;&nbsp;path("post/&lt;slug:slug&gt;/", views.post_detail, name="post_detail"),<br>]</p>
               <p>Конвертеры в угловых скобках задают тип и имя параметра: <code>str</code>, <code>int</code>, <code>slug</code>, <code>uuid</code>, <code>path</code>. Значение приходит в функцию вторым аргументом.</p>
-              <p><b>name</b> — это не украшение. По имени строятся ссылки в шаблонах, и при смене адреса их не придётся править вручную: <code>{% url "post_detail" slug=post.slug %}</code>.</p>
+              <p><b>name</b> — это не украшение. По имени строятся ссылки в шаблонах, и при смене адреса их не придётся править вручную.</p>
 
-              <h2>Приложения и include</h2>
-              <p>Держать все маршруты в одном файле быстро надоедает. В приложении создаётся свой <code>blog/urls.py</code>, а в корневом он подключается:</p>
-              <p class="ex">from django.urls import include, path<br><br>urlpatterns = [<br>&nbsp;&nbsp;&nbsp;&nbsp;path("blog/", include("blog.urls")),<br>]</p>
-              <p>В приложении задайте <code>app_name = "blog"</code> — тогда имена станут с пространством: <code>blog:post_detail</code>. Это спасает, когда в проекте два приложения с одинаковым <code>index</code>.</p>
+              <h3>Приложения и include</h3>
+              <p>Держать все маршруты в одном файле быстро надоедает. В приложении создаётся свой <code>blog/urls.py</code>, а в корневом он подключается через <code>path("blog/", include("blog.urls"))</code>. В приложении задайте <code>app_name = "blog"</code> — тогда имена станут с пространством: <code>blog:post_detail</code>. Это спасает, когда в проекте два приложения с одинаковым <code>index</code>.</p>
 
-              <h2>Шаблоны и контекст</h2>
+              <h3>Шаблоны и контекст</h3>
               <p>Вместо строки обычно возвращают <code>render</code> — он подставляет данные в HTML:</p>
               <p class="ex">from django.shortcuts import render, get_object_or_404<br>from .models import Post<br><br>def post_detail(request, slug):<br>&nbsp;&nbsp;&nbsp;&nbsp;post = get_object_or_404(Post, slug=slug)<br>&nbsp;&nbsp;&nbsp;&nbsp;return render(request, "blog/post.html", {"post": post})</p>
-              <p><code>get_object_or_404</code> — короткая запись «найти или отдать 404». Без неё <code>get</code> бросит исключение и посетитель увидит 500.</p>
-              <p>В шаблоне данные выводятся двойными скобками, теги — фигурными со знаком процента: <code>{{ post.title }}</code>, <code>{% for post in posts %}</code>, <code>{% if post.is_published %}</code>. Наследование через <code>{% extends "base.html" %}</code> избавляет от копирования шапки и подвала.</p>
+              <p><code>get_object_or_404</code> — короткая запись «найти или отдать 404». Без неё поиск бросит исключение и посетитель увидит 500.</p>
+              <p>В шаблоне данные выводятся двойными скобками, а теги — фигурными со знаком процента: цикл по статьям, условие публикации, наследование от базового шаблона. Наследование через <code>extends</code> избавляет от копирования шапки и подвала.</p>
 
-              <h2>Типичные ошибки</h2>
-              <p><b>NoReverseMatch.</b> Имя маршрута в <code>{% url %}</code> не совпадает с <code>name</code> или не передан обязательный параметр. Проверьте пространство имён: <code>blog:post_detail</code> вместо <code>post_detail</code>.</p>
-              <p><b>404 вместо страницы.</b> Часто дело в слэше в конце: <code>path("post/")</code> совпадёт с <code>/post/</code>, но не с <code>/post</code>. Django умеет добавлять слэш автоматически, если включён <code>APPEND_SLASH</code>.</p>
+              <h3>Типичные ошибки</h3>
+              <p><b>NoReverseMatch.</b> Имя маршрута не совпадает с <code>name</code> или не передан обязательный параметр. Проверьте пространство имён: <code>blog:post_detail</code> вместо <code>post_detail</code>.</p>
+              <p><b>404 вместо страницы.</b> Часто дело в слэше в конце: <code>path("post/")</code> совпадёт с адресом со слэшем, но не без него. Django умеет добавлять слэш автоматически, если включён <code>APPEND_SLASH</code>.</p>
               <p><b>Вся логика во view.</b> Функция на 300 строк с запросами, письмами и расчётами не тестируется. Выносите в сервисные функции и методы моделей.</p>
               <p><b>Сырой HTML в коде.</b> Строки с разметкой внутри представления невозможно поддерживать. Шаблон для этого и нужен.</p>
 
-              <h2>Что дальше</h2>
-              <p>Локально всё работает — пора выкладывать: <a href="./deploy.html">деплой Django на VPS</a>. Основы данных — в статье <a href="./models-i-orm.html">модели и ORM</a>, старт с нуля — в <a href="./ustanovka.html">установке Django</a>.</p>
-
               <h3>Нужен сайт на Django, а не статья?</h3>
               <p>Сделаю проект под ключ: модели данных, админка, интеграции с 1С и оплатой, REST API, деплой на ваш сервер с HTTPS и резервными копиями. С 2009 года, по договору, с поддержкой после запуска.</p>
-              <p><a href="../index.html#contact" class="btn">ОБСУДИТЬ ПРОЕКТ</a></p>
-              <p>Полезно по теме: <a href="./models-i-orm.html">модели Django</a>, <a href="./deploy.html">деплой на VPS</a>, <a href="./index.html">Django: обзор</a>, <a href="../index.html#pricing">цены</a>.</p>
+              <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+              <p>Полезно по теме: <a href="./models-i-orm.html">модели Django</a>, <a href="./ustanovka.html">установка Django</a>, <a href="./deploy.html">деплой на VPS</a>, <a href="./index.html">обзор Django</a>, <a href="../index.html#pricing">цены</a>.</p>
             </div>
           </div>
         </div>
@@ -169,111 +168,71 @@
     </section>
   </main>
 
-  <footer id="footer" class="section-bg">
+  <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="footer-info">
-                  <h3>Герасимов Сергей</h3>
-                  <p>Разрабатываю сайты в соответствии с вашими пожеланиями и задачами. Оказываю услуги по продвижению в поиске и социальных сетях.</p>
-                </div>
-                <div class="footer-newsletter">
-                  <h4>Станьте подписчиком</h4>
-                  <p>Чтобы быть в курсе новостей и услуг, подпишитесь на информационную рассылку сайта.</p>
-                  <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
-                    <input type="email" placeholder="Ваш Email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Подписаться">
-                  </form>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="footer-links">
-                  <h4>Полезные ссылки</h4>
-                  <ul>
-                    <li><a href="../index.html#about">ОБО МНЕ</a></li>
-                    <li><a href="../index.html#features">УСЛУГИ</a></li>
-                    <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
-                    <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
-                    <li><a href="../html/index.html">ПРО HTML</a></li>
-                    <li><a href="../blogcss/index.html">ПРО CSS</a></li>
-                    <li><a href="./index.html">ПРО DJANGO</a></li>
-                  </ul>
-                </div>
-                <div class="footer-links">
-                  <h4 id="contacts">Контакты</h4>
-                  <p>
-                    Московская область <br>
-                    г. Домодедово<br>
-                    Студия создания сайтов <br><b>MAJORSKY.RU</b><br>
-                    <strong>Tел.:&nbsp;&nbsp;</strong><span class="reverse">85-68-111 (629) 7+</span><br>
-                    <strong>Email:&nbsp;&nbsp;</strong><span class="reverse">ur.kb@svomisareg</span>
-                  </p>
-                </div>
-                <div class="social-links">
-                  <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-                  <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                  <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>www.majorsky.ru</h3>
+              <p class="pb-3"><em>РАЗРАБОТКА И ПРОДВИЖЕНИЕ САЙТОВ</em></p>
+              <p>
+                Московская область,<br> г. Домодедово,<br> студия создания сайтов<br><br>
+                <strong>Тел.:</strong> <a class="text-reset text-decoration-none" href="tel:+79261118658">+7 926 111-86-58</a><br>
+                <strong>Email:</strong> <a class="text-reset text-decoration-none" href="mailto:gerasimovs@bk.ru">gerasimovs@bk.ru</a><br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div id="form" class="form">
-              <h4>Обратная связь</h4>
-              <p>Отправьте сообщение с описанием вопроса — отвечу как можно быстрее.</p>
-              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXKnUqQ2p1b1DaUr1I2jGpf1lQzoZvXSUGaAZZWyYgu1MAIA/formResponse" method="POST" id="mG61Hd" role="form" class="contactForm" aria-label="Форма обратной связи">
-                <div class="form-group">
-                  <input type="text" name="entry.55319827" class="form-control" id="name" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="entry.2116619503" class="form-control" id="email" placeholder="Ваш Email" aria-label="Ваш email" autocomplete="email" data-rule="email" data-msg="Укажите корректный email">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="entry.1080093215" class="form-control" id="subject" placeholder="Тема сообщения" aria-label="Тема сообщения" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="entry.888071640" rows="5" data-rule="required" data-msg="Напишите сообщение" placeholder="Сообщение" aria-label="Сообщение"></textarea>
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div id="sendmessage">Сообщение отправлено. Спасибо!</div>
-                <div id="errormessage"></div>
-                <div class="text-center"><button type="submit" title="Отправить сообщение">Отправить сообщение</button></div>
-              </form>
-            </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Полезные ссылки</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#hero">ГЛАВНАЯ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#about">ОБО МНЕ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#features">УСЛУГИ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#pricing">ЦЕНЫ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#gallery">ПОРТФОЛИО</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Блог</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="../html/index.html">Про HTML</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../blogcss/index.html">Про CSS</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./index.html">Про Django</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./ustanovka.html">Установка Django</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./deploy.html">Деплой</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Подписаться</h4>
+            <p>Раз в месяц — короткое письмо о новых работах и полезных находках. Без спама.</p>
+            <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
+              <input type="email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Отправить">
+            </form>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
-      <div class="copyright">
-        &copy; Designed by <a href="https://majorsky.ru/">MAJORSKY</a> <span id="year">2026</span>
-      </div>
-      <div class="credits"></div>
+      <div class="copyright">Designed by <a href="../index.html">@MAJORSKY</a></div>
+      <div class="credits">&copy; <span id="year">2026</span></div>
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=79261118658" class="whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
-  <a href="#header" class="back-to-top" style="display: inline;" aria-label="Наверх"><i class="fa fa-chevron-up"></i></a>
+  <a href="../index.html#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="../html/lib/jquery/jquery.min.js"></script>
-  <script src="../html/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="../html/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../html/lib/easing/easing.min.js"></script>
-  <script src="../html/lib/mobile-nav/mobile-nav.js"></script>
-  <script src="../html/lib/wow/wow.min.js"></script>
-  <script src="../html/lib/waypoints/waypoints.min.js"></script>
-  <script src="../html/lib/counterup/counterup.min.js"></script>
-  <script src="../html/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="../html/lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="../html/lib/lightbox/js/lightbox.min.js"></script>
-  <script src="../html/contactform/contactform.js"></script>
-  <script src="../html/js/main.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script src="../assets/js/related.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
