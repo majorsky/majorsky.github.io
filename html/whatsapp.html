@@ -2,17 +2,32 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Виджет WhatsApp на вашем сайте</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="Виджеты, WhatsApp, HTML, HTML5, примеры HTML" name="keywords">
-  <meta content="Пример использования виджета WhatsApp" name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Виджет WhatsApp на сайте: готовый HTML и CSS код — majorsky.ru</title>
+  <meta name="description" content="Как поставить кнопку WhatsApp на сайт: HTML-код для футера и CSS-стили, чтобы виджет закрепился в правом нижнем углу и не перекрывал контент.">
+  <link rel="canonical" href="https://majorsky.ru/html/whatsapp.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Сергей Герасимов">
+  <meta name="theme-color" content="#ffffff">
   <meta name="google-site-verification" content="tKtWNXcnSiuNHBDz3rdULe91zQbMqUmTJScr9RaGvlM" />
   <meta name="yandex-verification" content="04fe22676397dea3" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="majorsky.ru">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Виджет WhatsApp на сайте: готовый HTML и CSS код">
+  <meta property="og:description" content="HTML-вставка в футер и CSS-стили для кнопки WhatsApp в правом нижнем углу сайта.">
+  <meta property="og:url" content="https://majorsky.ru/html/whatsapp.html">
+  <meta property="og:image" content="https://majorsky.ru/assets/img/msky-code.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
@@ -29,32 +44,74 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/form.css" rel="stylesheet">
   <script data-ad-client="ca-pub-3197683217259668" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171036103-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-171036103-1');
-</script>
+  <!--
+    Google Analytics 4.
+    Счётчик UA-171036103-1 отключён с июля 2023 года.
+    Впишите свой ID и раскомментируйте:
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  -->
 
-  ym(52364206, "init", {
-       clickmap:true,
-       trackLinks:true,
-       accurateTrackBounce:true,
-       webvisor:true
-  });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/52364206" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
+    ym(52364206, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/52364206" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://majorsky.ru/html/whatsapp.html#article",
+        "headline": "Виджет WhatsApp на сайте: готовый HTML и CSS код",
+        "description": "Как поставить кнопку WhatsApp на сайт: HTML-код для футера и CSS-стили.",
+        "inLanguage": "ru-RU",
+        "author": {
+          "@type": "Person",
+          "name": "Сергей Герасимов",
+          "url": "https://majorsky.ru/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "majorsky.ru",
+          "url": "https://majorsky.ru/"
+        },
+        "mainEntityOfPage": "https://majorsky.ru/html/whatsapp.html",
+        "dateModified": "2026-10-17"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://majorsky.ru/" },
+          { "@type": "ListItem", "position": 2, "name": "Про HTML", "item": "https://majorsky.ru/html/" },
+          { "@type": "ListItem", "position": 3, "name": "Виджет WhatsApp", "item": "https://majorsky.ru/html/whatsapp.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -67,10 +124,10 @@
       <div class="container">
         <div class="social-links">
           <i class="ion-ios-telephone">&nbsp;&nbsp;<b><span class="reverse">85-68-111 (629) 7+</span></b></i>
-          <a href="https://twitter.com/majorsky77" class="twitter"><i class="fa fa-twitter"></i></a>
-          <a href="https://facebook.com/webmsky" class="facebook"><i class="fa fa-facebook"></i></a>
-          
-          <a href="https://instagram.com/majorsky" class="instagram"><i class="fa fa-instagram"></i></a>
+          <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+          <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+
+          <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
         </div>
       </div>
     </div>
@@ -78,40 +135,28 @@
     <div class="container">
 
       <div class="logo float-left">
-        <!-- Uncomment below if you prefer to use an image logo -->
-        
-		<a href="../index.html" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
-        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+        <a href="../index.html" class="scrollto"><img src="img/logo.png" alt="MAJORSKY.RU — на главную" class="img-fluid"></a>
       </div>
 
-      <nav class="main-nav float-right d-none d-lg-block">
+      <nav class="main-nav float-right d-none d-lg-block" aria-label="Основная навигация">
         <ul>
-          <li class="active"><a href="../index.html#intro">ГЛАВНАЯ</a></li>
+          <li class="active"><a href="../index.html#hero">ГЛАВНАЯ</a></li>
           <li><a href="../index.html#about">ОБО МНЕ</a></li>
-          <li><a href="../index.html#services">УСЛУГИ</a></li>
-          <li><a href="../index.html#portfolio">МОИ КЕЙСЫ</a></li>
-		  <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
+          <li><a href="../index.html#features">УСЛУГИ</a></li>
+          <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
+          <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
           <li><a href="../index.html#team">КОМАНДА</a></li>
-          <li class="drop-down"><a href="">БЛОГИ</a>
+          <li class="drop-down"><a href="#">БЛОГ</a>
             <ul>
+              <li><a href="./index.html">Про HTML</a></li>
+              <li><a href="../blogcss/index.html">Про CSS</a></li>
               <li><a href="../video/index.html">Видео</a></li>
-              <li class="drop-down"><a href="#">Вэб-разработка</a>
-                <ul>
-                  <li><a href="./index.html">Про HTML</a></li>
-                  <li><a href="../blogcss/index.html">Про CSS</a></li>
-                  <li><a href="#">Про Python</a></li>
-                  <li><a href="#">Про Дизайн</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Контекстная реклама</a></li>
-              <li><a href="#">Поисковое продвижение</a></li>
-              <li><a href="#">СММ</a></li>
             </ul>
           </li>
-          <li><a href="../index.html#contacts">КОНТАКТЫ</a></li>
+          <li><a href="../index.html#contact">КОНТАКТЫ</a></li>
         </ul>
       </nav><!-- .main-nav -->
-      
+
     </div>
   </header><!-- #header -->
 
@@ -125,7 +170,7 @@
           <h2>ВИДЖЕТ WhatsApp НА ВАШЕМ <span>САЙТЕ</span></h2>
         </div>
         <div class="col-md-6 intro-img order-md-last order-first">
-          <img src="img/intro-img.svg" alt="" class="img-fluid">
+          <img src="img/intro-img.svg" alt="Кнопка WhatsApp в углу сайта" class="img-fluid">
         </div>
       </div>
 
@@ -146,57 +191,59 @@
           <div class="col-lg-6 col-md-6">
             <div class="about-content">
               <h2>Как разместить код виджета WhatsApp на сайте?</h2>
-              <p>Вы видите два фрагмента кода для размещения на своём сайте:</p>
+              <p>Ниже — два фрагмента кода для размещения на вашем сайте:</p>
               <ul>
-                <li><i class="ion-android-checkmark-circle"></i> Код <b>виджета WhatsApp</b> на языке HTML, который лучше разместить в разделе "Footer" Вашего сайта</li>
-                <li><i class="ion-android-checkmark-circle"></i> Код стилей CSS <b>виджета WhatsApp</b>, который нужно доавить в ваши таблицы стилей, чтобы виджет разместился в нижнем правом углу сайта</li>
+                <li><i class="ion-android-checkmark-circle"></i> Код <b>виджета WhatsApp</b> на языке HTML — его лучше разместить в разделе «Footer» вашего сайта.</li>
+                <li><i class="ion-android-checkmark-circle"></i> Код стилей CSS <b>виджета WhatsApp</b> — добавьте его в таблицу стилей, чтобы кнопка закрепилась в нижнем правом углу и не перекрывала контент.</li>
               </ul>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
             <div class="about-content">
-              <h3>HTML код виджета WhatsApp для размещения на сайте</h3>
+              <h3>HTML-код виджета WhatsApp для сайта</h3>
               <p class="ex">&lt;!DOCTYPE html&gt;<br>
                 &lt;html&gt;<br>
                 &lt;head&gt;<br>
-                  &lt;meta charset="utf-8"&gt;<br>
-                  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;<br>
-                  &lt;title&gt;Prueba WhatsApp&lt;/title&gt;<br>
-                  &lt;link rel="stylesheet" href="https://stackpath.<br>bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"&gt;<br>
+                &lt;meta charset="utf-8"&gt;<br>
+                &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;<br>
+                &lt;title&gt;Кнопка WhatsApp&lt;/title&gt;<br>
+                &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"&gt;<br>
                 &lt;/head&gt;<br>
                 &lt;body&gt;<br>
-                  &lt;a href="https://api.whatsapp.com/send?phone=<b>ВАШ НОМЕР ВИДА 7ХХХХХХХХХХ</b>" class="whatsapp" target="_blank"&gt; &lt;i class="fa fa-whatsapp whatsapp-icon"&gt;&lt;/i&gt;&lt;/a&gt;<br>               
+                &lt;a href="https://api.whatsapp.com/send?phone=<b>ВАШ НОМЕР ВИДА 7ХХХХХХХХХХ</b>" class="whatsapp" target="_blank" rel="noopener"&gt; &lt;i class="fa fa-whatsapp whatsapp-icon"&gt;&lt;/i&gt;&lt;/a&gt;<br>
                 &lt;/body&gt;<br>
                 &lt;/html&gt;
-             </p>
-             <h3>CSS код виджета WhatsApp для размещения на сайте</h3>
+              </p>
+              <h3>CSS-код виджета WhatsApp для сайта</h3>
               <p class="ex">.whatsapp {<br>
-              position: fixed;<br>
-              width: 44px;<br>
-              height: 44px;<br>
-              right: 14px;<br>
-              bottom: 63px;<br>
-              background-color: #25d366;<br>
-              color: #FFF;<br>
-              border-radius: 50px;<br>
-              text-align: center;<br>
-              font-size: 18px;<br>
-              z-index: 100;<br>
-              }<br>
-  
-              .whatsapp-icon {<br>
-              margin-top:13px;<br>
-              color:#FFF;<br>
-              }
-            </p>
-            <p>Спасибо за внимание.</p>
-            <a href="./index.html" class="btn">НАЗАД К СТАЬЯМ</a>
+                position: fixed;<br>
+                width: 44px;<br>
+                height: 44px;<br>
+                right: 14px;<br>
+                bottom: 63px;<br>
+                background-color: #25d366;<br>
+                color: #FFF;<br>
+                border-radius: 50px;<br>
+                text-align: center;<br>
+                font-size: 18px;<br>
+                z-index: 100;<br>
+                }<br>
+                <br>
+                .whatsapp-icon {<br>
+                margin-top: 13px;<br>
+                color: #FFF;<br>
+                }
+              </p>
+              <p>Спасибо за внимание.</p>
+              <a href="./index.html" class="btn">НАЗАД К СТАТЬЯМ</a>
             </div>
-            </div>
+          </div>
         </div>
       </div>
 
     </section><!-- #about -->
+
+  </main>
 
   <!--==========================
     Footer
@@ -211,54 +258,54 @@
 
             <div class="row">
 
-                <div class="col-sm-6">
+              <div class="col-sm-6">
 
-                  <div class="footer-info">
-                    <h3>Герасимов Сергей</h3>
-                    <p>Разрабатываю сайты в соответствии с вашими пожеланиями и потребностями. Оказываю услуги по продвижению в поиске и социальных сетях.</p>
-                  </div>
-
-                  <div class="footer-newsletter">
-                    <h4>Станьте подписчиком</h4>
-                    <p>Чтобы быть в курсе последних новостей связанных с оказанием услуг, подпишитесь на информационную рассылку сайта.</p>
-                    <form action="" method="post">
-                      <input type="email" placeholder="Ваш Email" name="email"><input type="submit" value="Подписаться">
-                    </form>
-                  </div>
-
+                <div class="footer-info">
+                  <h3>Герасимов Сергей</h3>
+                  <p>Разрабатываю сайты в соответствии с вашими пожеланиями и задачами. Оказываю услуги по продвижению в поиске и социальных сетях.</p>
                 </div>
 
-                <div class="col-sm-6">
-                  <div class="footer-links">
-                    <h4>Полезные ссылки</h4>
-                    <ul>
-                      <li><a href="../index.html#about">ОБО МНЕ</a></li>
-                      <li><a href="../index.html#services">УСЛУГИ</a></li>
-                      <li><a href="../index.html#portfolio">МОИ КЕЙСЫ</a></li>
-                      <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
-                      <li><a href="../index.html#team">КОМАНДА</a></li>
-                      <li><a href="../index.html#intro">БЛОГИ</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="footer-links">
-                    <h4 id="contacts">Контакты</h4>
-                    <p>
-                      Московская область <br>
-                      г. Домодедово<br>
-                      Студия создания сайтов <br><b>MAJORSKY.RU</b><br>
-                      <strong>Tел.:&nbsp;&nbsp;</strong><span class="reverse">85-68-111 (629) 7+</span><br>
-                      <strong>Email:&nbsp;&nbsp;</strong><span class="reverse">ur.kb@svomisareg</span>
-                    </p>
-                  </div>
-
-                  <div class="social-links">
-                    <a href="https://twitter.com/majorsky77" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="https://facebook.com/webmsky" class="facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="https://instagram.com/majorsky" class="instagram"><i class="fa fa-instagram"></i></a>
-                  </div>
-
+                <div class="footer-newsletter">
+                  <h4>Станьте подписчиком</h4>
+                  <p>Чтобы быть в курсе новостей и услуг, подпишитесь на информационную рассылку сайта.</p>
+                  <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
+                    <input type="email" placeholder="Ваш Email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Подписаться">
+                  </form>
                 </div>
+
+              </div>
+
+              <div class="col-sm-6">
+                <div class="footer-links">
+                  <h4>Полезные ссылки</h4>
+                  <ul>
+                    <li><a href="../index.html#about">ОБО МНЕ</a></li>
+                    <li><a href="../index.html#features">УСЛУГИ</a></li>
+                    <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
+                    <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
+                    <li><a href="../index.html#team">КОМАНДА</a></li>
+                    <li><a href="../index.html#hero">ГЛАВНАЯ</a></li>
+                  </ul>
+                </div>
+
+                <div class="footer-links">
+                  <h4 id="contacts">Контакты</h4>
+                  <p>
+                    Московская область <br>
+                    г. Домодедово<br>
+                    Студия создания сайтов <br><b>MAJORSKY.RU</b><br>
+                    <strong>Tел.:&nbsp;&nbsp;</strong><span class="reverse">85-68-111 (629) 7+</span><br>
+                    <strong>Email:&nbsp;&nbsp;</strong><span class="reverse">ur.kb@svomisareg</span>
+                  </p>
+                </div>
+
+                <div class="social-links">
+                  <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                  <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                </div>
+
+              </div>
 
             </div>
 
@@ -267,37 +314,35 @@
           <div class="col-lg-6">
 
             <div id="form" class="form">
-              
+
               <h4>Обратная связь</h4>
-              <p>Отправьте сообщение с описанием вашего вопроса. Я отвечу, как можно быстрей.</p>
-              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXKnUqQ2p1b1DaUr1I2jGpf1lQzoZvXSUGaAZZWyYgu1MAIA/formResponse" method="POST" id="mG61Hd" role="form" class="contactForm">
+              <p>Отправьте сообщение с описанием вопроса — отвечу как можно быстрее.</p>
+              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXKnUqQ2p1b1DaUr1I2jGpf1lQzoZvXSUGaAZZWyYgu1MAIA/formResponse" method="POST" id="mG61Hd" role="form" class="contactForm" aria-label="Форма обратной связи">
                 <div class="form-group">
-                  <input type="text" name="entry.55319827" class="form-control" id="name" placeholder="Ваше имя" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                  <input type="text" name="entry.55319827" class="form-control" id="name" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
                   <div class="validation" style="display: block;"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="entry.2116619503" class="form-control" id="email" placeholder="Ваш Email" data-rule="email" data-msg="Please enter a valid email">
+                  <input type="email" name="entry.2116619503" class="form-control" id="email" placeholder="Ваш Email" aria-label="Ваш email" autocomplete="email" data-rule="email" data-msg="Укажите корректный email">
                   <div class="validation" style="display: block;"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="entry.1080093215" class="form-control" id="subject" placeholder="Тема сообщения" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                  <input type="text" name="entry.1080093215" class="form-control" id="subject" placeholder="Тема сообщения" aria-label="Тема сообщения" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
                   <div class="validation" style="display: block;"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="entry.888071640" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Сообщение"></textarea>
+                  <textarea class="form-control" name="entry.888071640" rows="5" data-rule="required" data-msg="Напишите сообщение" placeholder="Сообщение" aria-label="Сообщение"></textarea>
                   <div class="validation" style="display: block;"></div>
                 </div>
-               
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
+
+                <div id="sendmessage">Сообщение отправлено. Спасибо!</div>
                 <div id="errormessage"></div>
-               
+
                 <div class="text-center"><button type="submit" title="Отправить сообщение">Отправить сообщение</button></div>
               </form>
             </div>
 
           </div>
-
-          
 
         </div>
 
@@ -306,17 +351,17 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Designed by <a href="http://www.majorsky.ru/">MAJORSKY</a> 2020.
+        &copy; Designed by <a href="https://majorsky.ru/">MAJORSKY</a> <span id="year">2026</span>
       </div>
       <div class="credits">
-      
+
       </div>
     </div>
   </footer><!-- #footer -->
-	<a href="https://api.whatsapp.com/send?phone=79261118658" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
-  <a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
+  <a href="https://api.whatsapp.com/send?phone=79261118658" class="whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
+  <a href="#header" class="back-to-top" style="display: inline;" aria-label="Наверх"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
- <div id="preloader"></div>
+  <div id="preloader"></div>
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -335,5 +380,9 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
