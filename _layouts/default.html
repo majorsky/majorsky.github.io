@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ru' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="{{ site.author.name }}">
+
+  <meta property="og:type" content="{% if page.collection == 'posts' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.title | split: ' — ' | first }}">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/img/msky-code.png' | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="{{ '/assets/img/favicon.png' | relative_url }}" rel="icon">
+  <link href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="{{ '/assets/vendor/aos/aos.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/vendor/bootstrap-icons/bootstrap-icons.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/vendor/boxicons/css/boxicons.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+
+  <style>
+    .about-content ul{list-style:none;padding-left:0;margin-left:0}
+    .about-content ul li{position:relative;padding-left:26px;margin-bottom:8px}
+    .about-content ul li i{position:absolute;left:0;top:3px}
+    .about-content ol{padding-left:22px}
+    .about-content ol li{margin-bottom:8px}
+  </style>
+
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(52364206, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+  </script>
+
+  {% if page.schema %}{{ page.schema }}{% endif %}
+</head>
+
+<body>
+  {% include header.html %}
+  {{ content }}
+  {% include footer.html %}
+
+  <a href="{{ '/index.html' | relative_url }}#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/aos/aos.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/glightbox/js/glightbox.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/swiper/swiper-bundle.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/related.js' | relative_url }}"></script>
+</body>
+</html>

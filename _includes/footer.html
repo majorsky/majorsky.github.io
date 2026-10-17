@@ -1,0 +1,60 @@
+{% comment %}Подвал сайта. Подключается из _layouts/default.html{% endcomment %}
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-info">
+            <h3>{{ site.title | split: ' — ' | first }}</h3>
+            <p class="pb-3"><em>РАЗРАБОТКА И ПРОДВИЖЕНИЕ САЙТОВ</em></p>
+            <p>
+              Московская область,<br> г. Домодедово,<br> студия создания сайтов<br><br>
+              <strong>Тел.:</strong> <a class="text-reset text-decoration-none" href="tel:+79261118658">+7 926 111-86-58</a><br>
+              <strong>Email:</strong> <a class="text-reset text-decoration-none" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a><br>
+            </p>
+            <div class="social-links mt-3">
+              <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Полезные ссылки</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/index.html' | relative_url }}#hero">ГЛАВНАЯ</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/index.html' | relative_url }}#about">ОБО МНЕ</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/index.html' | relative_url }}#features">УСЛУГИ</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/index.html' | relative_url }}#pricing">ЦЕНЫ</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/index.html' | relative_url }}#gallery">ПОРТФОЛИО</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Блог</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/html/index.html' | relative_url }}">Про HTML</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/blogcss/index.html' | relative_url }}">Про CSS</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/django/index.html' | relative_url }}">Про Django</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ '/video/index.html' | relative_url }}">Видео</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4>Подписаться</h4>
+          <p>Раз в месяц — короткое письмо о новых работах и полезных находках. Без спама.</p>
+          <form action="mailto:{{ site.author.email }}" method="post" enctype="text/plain" aria-label="Подписка на новости">
+            <input type="email" name="email" aria-label="Ваш email для подписки" required>
+            <input type="submit" value="Отправить">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="copyright">Designed by <a href="{{ '/index.html' | relative_url }}">@MAJORSKY</a></div>
+    <div class="credits">&copy; {{ site.time | date: '%Y' }}</div>
+  </div>
+</footer>

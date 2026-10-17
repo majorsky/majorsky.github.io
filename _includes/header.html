@@ -1,0 +1,33 @@
+{% comment %}
+  Шапка сайта. Подключается из _layouts/default.html:
+  {% include header.html %}
+{% endcomment %}
+<header id="header" class="fixed-top d-flex align-items-center header-transparent">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="logo">
+      <h1><a href="{{ '/index.html' | relative_url }}"><span>WWW.MAJORSKY.RU</span></a></h1>
+    </div>
+
+    <nav id="navbar" class="navbar" aria-label="Основная навигация">
+      <ul>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#hero">ГЛАВНАЯ</a></li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#about">ОБО МНЕ</a></li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#features">УСЛУГИ</a></li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#gallery">ПОРТФОЛИО</a></li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#team">КОМАНДА</a></li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#pricing">ЦЕНЫ</a></li>
+        <li class="dropdown">
+          <a href="#"><span>БЛОГ</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{{ '/html/index.html' | relative_url }}">Про HTML</a></li>
+            <li><a href="{{ '/blogcss/index.html' | relative_url }}">Про CSS</a></li>
+            <li><a href="{{ '/django/index.html' | relative_url }}">Про Django</a></li>
+            <li><a href="{{ '/video/index.html' | relative_url }}">Видео</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="{{ '/index.html' | relative_url }}#contact">КОНТАКТЫ</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle" role="button" tabindex="0" aria-label="Открыть меню"></i>
+    </nav>
+  </div>
+</header>

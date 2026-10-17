@@ -1,0 +1,40 @@
+# Jekyll-конфигурация для majorsky.ru
+# GitHub Pages собирает сайт по этому файлу автоматически:
+# Settings -> Pages -> Deploy from a branch -> master / (root)
+
+title: majorsky.ru — разработка и продвижение сайтов
+description: Создаю и продвигаю сайты с 2009 года. Лендинги, корпоративные сайты, магазины, SEO и поддержка. Домодедово, Московская область.
+url: https://majorsky.ru
+baseurl: ""
+lang: ru-RU
+timezone: Europe/Moscow
+
+author:
+  name: Сергей Герасимов
+  email: gerasimovs@bk.ru
+
+markdown: kramdown
+highlighter: rouge
+
+# Папки, которые не нужно публиковать
+exclude:
+  - README.md
+  - CHANGES.md
+  - "*.cmd"
+  - "*.ps1"
+  - tools/
+
+# Плагины подключаем ПОСЛЕ перевода первой страницы.
+# Если включить jekyll-sitemap сейчас, он создаст свой sitemap.xml
+# и перезапишет статический файл, который сейчас в репозитории.
+#
+# plugins:
+#   - jekyll-sitemap
+#   - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
