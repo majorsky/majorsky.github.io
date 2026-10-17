@@ -1,0 +1,82 @@
+---
+layout: default
+title: React с нуля: что это и с чего начать — majorsky.ru
+description: React — библиотека для интерфейсов на JavaScript. Разбираю, как устроены компоненты и состояние, зачем нужен JSX и с чего начать, если вы пишете на HTML и CSS.
+permalink: /react/
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>REACT <span>С НУЛЯ</span></h1>
+          <h2>ЧТО ЭТО И С ЧЕГО НАЧАТЬ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="React — библиотека для интерфейсов">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>React с нуля</h2>
+        <p>Компоненты, состояние, JSX</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Что такое React</h3>
+            <p>React — это библиотека JavaScript для построения интерфейсов. Она не заменяет HTML и CSS, а меняет способ думать о них: вы описываете, как страница должна выглядеть при конкретных данных, а React сам обновляет нужные участки, когда данные меняются.</p>
+            <p>Ключевая идея — компоненты. Кнопка, карточка товара, меню, целая страница: всё это отдельные куски кода, которые можно собирать как из конструктора и переиспользовать в разных местах.</p>
+
+            <h3>Зачем нужен JSX</h3>
+            <p>В React разметка пишется прямо в JavaScript — в виде JSX. Выглядит как HTML, но внутри работают выражения: <code>&lt;h1&gt;Привет, {name}&lt;/h1&gt;</code>. Это позволяет держать разметку и логику рядом, а не раскидывать по десятку файлов и обработчиков.</p>
+            <p>Браузер JSX не понимает: его компилирует сборщик (обычно Vite) в обычные вызовы функций. На выходе — тот же JavaScript, который понимает любой браузер.</p>
+
+            <h3>Состояние вместо ручного DOM</h3>
+            <p>В классическом JavaScript вы берёте элемент и меняете его: <code>element.textContent = ...</code>. В React вы меняете данные, а разметка обновляется сама. Это снимает целый класс ошибок: забытые обновления, рассинхронизация, конфликты между обработчиками.</p>
+            <p>Состояние хранится в <code>useState</code>, а вычисления и подписки — в <code>useEffect</code>. Об этих хуках — отдельная статья, здесь важно понять принцип: сначала данные, потом вид.</p>
+
+            <h3>Что нужно знать до старта</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>HTML и CSS</b> — без них не собрать даже кнопку. Семантика, флексбоксы, адаптив.</li>
+              <li><i class="bi bi-check"></i> <b>JavaScript</b> — функции, массивы, объекты, <code>map</code>, деструктуризация, промисы.</li>
+              <li><i class="bi bi-check"></i> <b>Node.js и npm</b> — понадобятся для сборки и установки пакетов.</li>
+              <li><i class="bi bi-check"></i> <b>Терминал</b> — минимум команд: <code>npm create</code>, <code>npm run dev</code>.</li>
+            </ul>
+
+            <h3>Когда React оправдан, а когда нет</h3>
+            <p>React стоит брать, если интерфейс часто меняется без перезагрузки страницы: личный кабинет, админка, каталог с фильтрами, чат, дашборд. Если у вас лендинг на пять экранов — React добавит сборку, зависимости и вес, ничего не дав взамен.</p>
+            <p>Отдельно про SEO: React-приложение рендерится в браузере, поэтому для публичных страниц нужен серверный рендеринг (Next.js) или пререндер. Для внутренних интерфейсов это не важно.</p>
+
+            <h3>С чего начать</h3>
+            <p>Порядок, который работает: поставить Node.js, создать проект через Vite, разобраться с компонентами и пропсами, затем с хуками, и только потом браться за роутинг и запросы к API.</p>
+            <p>Статьи раздела появятся здесь же: установка React с Vite, компоненты и props, хуки <code>useState</code> и <code>useEffect</code>, сравнение с Vue. Пока материал готовится, посмотрите <a href="../django/index.html">раздел про Django</a> — если нужен и фронтенд, и бэкенд, это логичная пара.</p>
+
+            <h3>Нужен сайт на React, а не статья?</h3>
+            <p>Соберу интерфейс под ключ: компоненты, состояние, запросы к API, роутинг, сборка Vite и деплой. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="../django/index.html">про Django</a>, <a href="../html/index.html">примеры HTML</a>, <a href="../blogcss/index.html">примеры CSS</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

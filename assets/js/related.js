@@ -17,7 +17,12 @@
     { u: "/django/ustanovka.html", t: "Установка Django на Windows" },
     { u: "/django/models-i-orm.html", t: "Модели Django и ORM" },
     { u: "/django/views-i-urls.html", t: "Views и URL в Django" },
-    { u: "/django/deploy.html", t: "Деплой Django на VPS" }
+    { u: "/django/deploy.html", t: "Деплой Django на VPS" },
+    { u: "/react/", t: "React с нуля" },
+    { u: "/react/ustanovka.html", t: "Установка React и Vite" },
+    { u: "/react/hooks.html", t: "React Hooks: useState и useEffect" },
+    { u: "/react/components-props.html", t: "Компоненты и props в React" },
+    { u: "/react/vs-vue.html", t: "React или Vue" }
   ];
 
   var host = document.querySelector(".about-content");

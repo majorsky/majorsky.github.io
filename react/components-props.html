@@ -1,0 +1,90 @@
+---
+layout: default
+title: Компоненты React и props: как проектировать — majorsky.ru
+description: Что такое компоненты React, как передавать данные через props, чем управляемые компоненты отличаются от неуправляемых и как не превратить проект в свалку.
+permalink: /react/components-props.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>КОМПОНЕНТЫ <span>И PROPS</span></h1>
+          <h2>КАК ПРОЕКТИРОВАТЬ ИНТЕРФЕЙС</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Компоненты React и props">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Компоненты и props</h2>
+        <p>Данные вниз, события вверх</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Компонент — функция, которая возвращает разметку</h3>
+            <p>В React компонент — это функция. Она принимает объект с данными и возвращает JSX. Имя всегда с большой буквы: <code>Button</code> — компонент, <code>button</code> — HTML-тег.</p>
+            <p class="ex">function Button(props) {<br>&nbsp;&nbsp;return &lt;button&gt;{props.label}&lt;/button&gt;;<br>}</p>
+
+            <h3>props: данные снаружи</h3>
+            <p>Props — параметры компонента. Они приходят от родителя, только читаются и никогда не меняются внутри самого компонента. Это одностороннее движение данных: вниз по дереву.</p>
+            <p class="ex">&lt;Button label="Заказать" /&gt;<br>&lt;Button label="Подробнее" /&gt;</p>
+            <p>Один и тот же компонент, разные данные. Вместо копирования разметки вы описываете её один раз.</p>
+
+            <h3>Деструктуризация и значения по умолчанию</h3>
+            <p>Писать <code>props.label</code> каждый раз утомляет, поэтому props сразу разбирают:</p>
+            <p class="ex">function Button({ label, size = "md", disabled = false }) {<br>&nbsp;&nbsp;return &lt;button className={size} disabled={disabled}&gt;{label}&lt;/button&gt;;<br>}</p>
+            <p>Значения по умолчанию делают компонент предсказуемым: родитель может передать только <code>label</code>, остальное подставится само.</p>
+
+            <h3>children: содержимое между тегами</h3>
+            <p>Всё, что вы кладёте между открывающим и закрывающим тегом, приходит в prop <code>children</code>. Так делают обёртки, модальные окна, карточки:</p>
+            <p class="ex">function Card({ children }) {<br>&nbsp;&nbsp;return &lt;div className="card"&gt;{children}&lt;/div&gt;;<br>}<br><br>&lt;Card&gt;&lt;h3&gt;Заголовок&lt;/h3&gt;&lt;p&gt;Текст&lt;/p&gt;&lt;/Card&gt;</p>
+
+            <h3>События: данные вверх</h3>
+            <p>Props не меняются, поэтому дочерний компонент не может сам обновить данные родителя. Вместо этого он вызывает функцию, которую передали сверху:</p>
+            <p class="ex">function Search({ onSearch }) {<br>&nbsp;&nbsp;return (&lt;input onChange={e =&gt; onSearch(e.target.value)} /&gt;);<br>}</p>
+            <p>Родитель передаёт обработчик, ребёнок сообщает о событии. Такой подход называется «данные вниз, события вверх» и держит поток состояния понятным.</p>
+
+            <h3>Списки и ключи</h3>
+            <p>Массив превращается в список методом <code>map</code>. У каждого элемента обязателен <code>key</code> — уникальный и стабильный, лучше всего <code>id</code> из базы:</p>
+            <p class="ex">{posts.map(post =&gt; (<br>&nbsp;&nbsp;&lt;PostCard key={post.id} post={post} /&gt;<br>))}</p>
+            <p>Индекс массива в качестве ключа работает только для статичных списков. Если элементы добавляются, удаляются или сортируются, индекс приводит к путанице состояния.</p>
+
+            <h3>Как не превратить проект в свалку</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Один компонент — одна ответственность.</b> Если файл длиннее 200 строк, скорее всего внутри два-три компонента.</li>
+              <li><i class="bi bi-check"></i> <b>Не передавайте десять props, если можно передать один объект</b> — но не злоупотребляйте: явные props читаются лучше.</li>
+              <li><i class="bi bi-check"></i> <b>Не тяните состояние высоко без нужды.</b> Чем выше состояние, тем больше компонентов перерисовывается.</li>
+              <li><i class="bi bi-check"></i> <b>Не кладите запросы в каждый компонент.</b> Данные грузятся в одном месте, дальше идут через props.</li>
+            </ul>
+
+            <h3>Нужен сайт на React, а не статья?</h3>
+            <p>Соберу интерфейс под ключ: компоненты, состояние, запросы к API, роутинг, сборка Vite и деплой. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">React с нуля</a>, <a href="./hooks.html">хуки useState и useEffect</a>, <a href="./ustanovka.html">установка React</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

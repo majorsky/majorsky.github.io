@@ -1,0 +1,92 @@
+---
+layout: default
+title: React Hooks: useState и useEffect с примерами — majorsky.ru
+description: Как работают хуки React: useState для состояния, useEffect для побочных эффектов, правила хуков и типичные ошибки с бесконечными запросами.
+permalink: /react/hooks.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>REACT <span>HOOKS</span></h1>
+          <h2>USESTATE И USEEFFECT</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Хуки React: useState и useEffect">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Хуки React</h2>
+        <p>Состояние и побочные эффекты</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Что такое хук</h3>
+            <p>Хук — функция, которая даёт функциональному компоненту доступ к возможностям React: состоянию, эффектам, контексту. Все хуки начинаются с <code>use</code>, и это не соглашение, а требование линтера.</p>
+
+            <h3>useState: состояние компонента</h3>
+            <p>Самый нужный хук. Возвращает пару: текущее значение и функцию для его изменения.</p>
+            <p class="ex">import { useState } from "react";<br><br>function Counter() {<br>&nbsp;&nbsp;const [count, setCount] = useState(0);<br><br>&nbsp;&nbsp;return (<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick={() =&gt; setCount(count + 1)}&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Нажато {count} раз<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;);<br>}</p>
+            <p>Вызов <code>setCount</code> не меняет переменную напрямую — он просит React перерисовать компонент с новым значением. Прямое изменение <code>count = 5</code> ничего не даст.</p>
+            <p><b>Функциональное обновление.</b> Если новое значение зависит от предыдущего, передайте функцию: <code>setCount(c =&gt; c + 1)</code>. Так вы не попадёте в ситуацию, когда несколько обновлений подряд теряются.</p>
+            <p><b>Сложное состояние.</b> Для объектов и массивов создавайте новую копию: <code>setUser({...user, name: "Анна"})</code>. Мутация той же ссылки не вызовет перерисовку.</p>
+
+            <h3>useEffect: побочные эффекты</h3>
+            <p>Запросы к API, подписки, таймеры, работа с <code>document</code> — всё, что выходит за пределы отрисовки. Эффект запускается после того, как компонент появился на экране.</p>
+            <p class="ex">import { useEffect, useState } from "react";<br><br>function Posts() {<br>&nbsp;&nbsp;const [posts, setPosts] = useState([]);<br><br>&nbsp;&nbsp;useEffect(() =&gt; {<br>&nbsp;&nbsp;&nbsp;&nbsp;fetch("/api/posts")<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(r =&gt; r.json())<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(setPosts);<br>&nbsp;&nbsp;}, []);<br><br>&nbsp;&nbsp;return &lt;ul&gt;{posts.map(p =&gt; &lt;li key={p.id}&gt;{p.title}&lt;/li&gt;)}&lt;/ul&gt;;<br>}</p>
+            <p><b>Массив зависимостей</b> — главное, что нужно понять:</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <code>[]</code> — эффект выполнится один раз при монтировании.</li>
+              <li><i class="bi bi-check"></i> <code>[id]</code> — заново при изменении <code>id</code>.</li>
+              <li><i class="bi bi-check"></i> без второго аргумента — после каждой отрисовки, что почти всегда ошибка.</li>
+            </ul>
+            <p><b>Очистка.</b> Если эффект создаёт подписку или таймер, верните функцию очистки — React вызовет её при размонтировании:</p>
+            <p class="ex">useEffect(() =&gt; {<br>&nbsp;&nbsp;const id = setInterval(tick, 1000);<br>&nbsp;&nbsp;return () =&gt; clearInterval(id);<br>}, []);</p>
+
+            <h3>Правила хуков</h3>
+            <p>Два правила, которые нельзя нарушать:</p>
+            <ul>
+              <li><i class="bi bi-check"></i> Вызывайте хуки только на верхнем уровне компонента — не внутри условий, циклов и вложенных функций.</li>
+              <li><i class="bi bi-check"></i> Вызывайте их только из компонентов React или из других хуков.</li>
+            </ul>
+            <p>Причина простая: React различает хуки по порядку вызова. Условный вызов ломает этот порядок и приводит к перемешиванию состояния.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Бесконечный цикл.</b> Эффект без массива зависимостей меняет состояние, что вызывает новую отрисовку и новый эффект.</li>
+              <li><i class="bi bi-check"></i> <b>Забытые зависимости.</b> Внутри эффекта используется переменная, которой нет в массиве — эффект работает со старым значением.</li>
+              <li><i class="bi bi-check"></i> <b>Мутация состояния.</b> <code>items.push(x)</code> вместо <code>setItems([...items, x])</code> — компонент не перерисуется.</li>
+              <li><i class="bi bi-check"></i> <b>Хук в условии.</b> <code>if (isOpen) { useEffect(...) }</code> — нарушение правил, состояние поедет.</li>
+            </ul>
+
+            <h3>Нужен сайт на React, а не статья?</h3>
+            <p>Соберу интерфейс под ключ: компоненты, состояние, запросы к API, роутинг, сборка Vite и деплой. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">React с нуля</a>, <a href="./ustanovka.html">установка React</a>, <a href="../django/index.html">про Django</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

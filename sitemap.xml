@@ -72,4 +72,34 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://majorsky.ru/react/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/react/ustanovka.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/react/hooks.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/react/components-props.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/react/vs-vue.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
