@@ -4,6 +4,12 @@
 User-agent: *
 Allow: /
 
+# Блог индексируем полностью: HTML, CSS, Django, видео
+Allow: /html/
+Allow: /blogcss/
+Allow: /django/
+Allow: /video/
+
 # Служебное — не индексируем
 Disallow: /forms/
 Disallow: /incoming/
