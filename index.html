@@ -459,7 +459,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Мои работы</h2>
-          <p>Сайты, интерфейсы и оформление — примеры из портфолио</p>
+          <p>Портфолио</p>
         </div>
 
         <div class="row g-0" data-aos="fade-left">
@@ -766,7 +766,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Часто задаваемые вопросы</h2>
-          <p>Ответы на частые вопросы о разработке и продвижении сайтов</p>
+          <p>Ответы на частые вопросы</p>
         </div>
 
         <div class="faq-list">
@@ -837,7 +837,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>КОНТАКТЫ</h2>
-          <p>Напишите или позвоните — отвечу в течение рабочего дня, задам пару вопросов и скажу вилку бюджета. Работаю по договору, оплата по этапам.</p>
+          <p>ОБРАТНАЯ СВЯЗЬ</p>
         </div>
 
         <div class="row">
@@ -871,11 +871,12 @@
             <!--
               Внимание: GitHub Pages не исполняет PHP, поэтому forms/contact.php не работал.
               Форма переведена на mailto: при отправке открывается почтовый клиент с готовым письмом.
-              Класс php-email-form не нужен: форма отправляется через mailto,
-              AJAX-обработчик удалён, поэтому письмо просто открывается в почтовом клиенте.
+              Класс php-email-form возвращён специально: он задаёт оформление кнопки
+              «Отправить» и отступы полей. AJAX-обработчик (validate.js) не подключён,
+              поэтому форма работает как обычная отправка mailto.
               Вариант без почтового клиента — Formspree или FormSubmit (см. CHANGES.md).
             -->
-            <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Форма заявки">
+            <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" class="php-email-form" aria-label="Форма заявки">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" required>
