@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Деплой Django на VPS: Gunicorn, Nginx, PostgreSQL — majorsky.ru</title>
+  <meta name="description" content="Пошаговый деплой Django на Ubuntu VPS: PostgreSQL, Gunicorn, systemd, Nginx, статика, HTTPS через certbot и чек-лист безопасности перед запуском.">
+  <link rel="canonical" href="https://majorsky.ru/django/deploy.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Сергей Герасимов">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="google-site-verification" content="tKtWNXcnSiuNHBDz3rdULe91zQbMqUmTJScr9RaGvlM" />
+  <meta name="yandex-verification" content="04fe22676397dea3" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="majorsky.ru">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Деплой Django на VPS: Gunicorn, Nginx, PostgreSQL">
+  <meta property="og:description" content="От чистого сервера до рабочего сайта с HTTPS — по шагам.">
+  <meta property="og:url" content="https://majorsky.ru/django/deploy.html">
+  <meta property="og:image" content="https://majorsky.ru/assets/img/msky-code.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+  <link href="../html/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../html/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../html/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="../html/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="../html/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../html/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="../html/css/style.css" rel="stylesheet">
+  <link href="../html/css/form.css" rel="stylesheet">
+  <!-- AdSense убран: рекламных блоков на сайте нет -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(52364206, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://majorsky.ru/django/deploy.html#article",
+        "headline": "Деплой Django на VPS: Gunicorn, Nginx, PostgreSQL",
+        "description": "Пошаговый деплой Django на Ubuntu VPS.",
+        "inLanguage": "ru-RU",
+        "author": { "@type": "Person", "name": "Сергей Герасимов", "url": "https://majorsky.ru/" },
+        "publisher": { "@type": "Organization", "name": "majorsky.ru", "url": "https://majorsky.ru/" },
+        "mainEntityOfPage": "https://majorsky.ru/django/deploy.html",
+        "dateModified": "2026-10-17"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://majorsky.ru/" },
+          { "@type": "ListItem", "position": 2, "name": "Про Django", "item": "https://majorsky.ru/django/" },
+          { "@type": "ListItem", "position": 3, "name": "Деплой", "item": "https://majorsky.ru/django/deploy.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header id="header">
+    <div id="topbar">
+      <div class="container">
+        <div class="social-links">
+          <i class="ion-ios-telephone">&nbsp;&nbsp;<b><span class="reverse">85-68-111 (629) 7+</span></b></i>
+          <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+          <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="logo float-left">
+        <a href="../index.html" class="scrollto"><img src="../html/img/logo.png" alt="MAJORSKY.RU — на главную" class="img-fluid"></a>
+      </div>
+      <nav class="main-nav float-right d-none d-lg-block" aria-label="Основная навигация">
+        <ul>
+          <li class="active"><a href="../index.html#hero">ГЛАВНАЯ</a></li>
+          <li><a href="../index.html#about">ОБО МНЕ</a></li>
+          <li><a href="../index.html#features">УСЛУГИ</a></li>
+          <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
+          <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
+          <li><a href="../index.html#team">КОМАНДА</a></li>
+          <li class="drop-down"><a href="#">БЛОГ</a>
+            <ul>
+              <li><a href="../html/index.html">Про HTML</a></li>
+              <li><a href="../blogcss/index.html">Про CSS</a></li>
+              <li><a href="./index.html">Про Django</a></li>
+              <li><a href="../video/index.html">Видео</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html#contact">КОНТАКТЫ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>ДЕПЛОЙ DJANGO НА VPS <span>ПО ШАГАМ</span></h2>
+        </div>
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="../html/img/intro-img.svg" alt="Деплой Django на сервер" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10">
+            <div class="about-content">
+              <h2>Что понадобится</h2>
+              <p>VPS на Ubuntu 22.04 или 24.04, минимум 2 ГБ памяти, домен и полчаса времени. Схема классическая: Nginx принимает запросы снаружи, Gunicorn запускает Django, PostgreSQL хранит данные, systemd следит, чтобы процессы не падали.</p>
+
+              <h2>Шаг 1. Подготовить сервер</h2>
+              <p class="ex">adduser deploy<br>usermod -aG sudo deploy<br>ufw allow OpenSSH<br>ufw allow "Nginx Full"<br>ufw enable</p>
+              <p>Работать под root постоянно не стоит: одна опечатка в команде обходится дорого.</p>
+
+              <h2>Шаг 2. Установить пакеты</h2>
+              <p class="ex">sudo apt update<br>sudo apt install python3-venv python3-pip postgresql nginx</p>
+              <p>Затем создайте базу и пользователя PostgreSQL:</p>
+              <p class="ex">sudo -u postgres createuser --interactive<br>sudo -u postgres createdb blogdb</p>
+
+              <h2>Шаг 3. Код и окружение</h2>
+              <p class="ex">cd /var/www<br>git clone git@github.com:user/blog.git<br>cd blog<br>python3 -m venv .venv<br>source .venv/bin/activate<br>pip install -r requirements.txt</p>
+              <p>В <code>requirements.txt</code> обязательно фиксируйте версии: <code>django==5.0.6</code>, <code>gunicorn==22.0.0</code>, <code>psycopg2-binary</code>, <code>whitenoise</code>.</p>
+
+              <h2>Шаг 4. Настройки для продакшна</h2>
+              <p>Три вещи, без которых деплой опасен: <code>DEBUG = False</code>, реальный домен в <code>ALLOWED_HOSTS</code> и секретный ключ из переменной окружения, а не из репозитория.</p>
+              <p class="ex">DEBUG = False<br>ALLOWED_HOSTS = ["majorsky.ru", "www.majorsky.ru"]<br>SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]</p>
+              <p>Файл <code>.env</code> с ключами не коммитится, права на него — только у владельца.</p>
+
+              <h2>Шаг 5. Gunicorn и systemd</h2>
+              <p class="ex">gunicorn config.wsgi:application --bind 127.0.0.1:8000 --workers 3</p>
+              <p>Три воркера — правило «два ядра плюс один». Чтобы процесс перезапускался после падения и ребута, создайте юнит <code>/etc/systemd/system/blog.service</code> с <code>WorkingDirectory</code>, <code>ExecStart</code> и <code>Restart=always</code>, затем:</p>
+              <p class="ex">sudo systemctl enable --now blog<br>sudo systemctl status blog</p>
+
+              <h2>Шаг 6. Nginx</h2>
+              <p>Nginx отдаёт статику и проксирует остальное на Gunicorn. В конфиге сайта важны два блока:</p>
+              <p class="ex">location /static/ {<br>&nbsp;&nbsp;&nbsp;&nbsp;alias /var/www/blog/static/;<br>}<br>location / {<br>&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://127.0.0.1:8000;<br>}</p>
+              <p>Перед первым запуском соберите статику: <code>python manage.py collectstatic</code>. Если статику раздаёт сам Django через WhiteNoise, блок <code>/static/</code> можно не писать — но для больших проектов Nginx быстрее.</p>
+
+              <h2>Шаг 7. HTTPS</h2>
+              <p class="ex">sudo apt install certbot python3-certbot-nginx<br>sudo certbot --nginx -d majorsky.ru -d www.majorsky.ru</p>
+              <p>Certbot сам пропишет сертификат и настроит редирект с HTTP. Продление — автоматическое, проверяется таймером systemd.</p>
+
+              <h2>Чек-лист перед запуском</h2>
+              <ul>
+                <li><i class="ion-android-checkmark-circle"></i> <code>DEBUG = False</code>, <code>ALLOWED_HOSTS</code> заполнен, секреты вне репозитория.</li>
+                <li><i class="ion-android-checkmark-circle"></i> Миграции применены: <code>migrate</code>, суперпользователь создан.</li>
+                <li><i class="ion-android-checkmark-circle"></i> Статика собрана и отдаётся, в консоли браузера нет 404.</li>
+                <li><i class="ion-android-checkmark-circle"></i> Настроены резервные копии базы, хотя бы ежедневные.</li>
+                <li><i class="ion-android-checkmark-circle"></i> Включён файрвол, закрыт доступ к PostgreSQL снаружи.</li>
+              </ul>
+
+              <h2>Частые ошибки</h2>
+              <p><b>502 Bad Gateway.</b> Gunicorn не запущен или слушает другой порт. Смотрите <code>journalctl -u blog -n 50</code>.</p>
+              <p><b>DisallowedHost.</b> Домен не добавлен в <code>ALLOWED_HOSTS</code> — Django блокирует запрос специально.</p>
+              <p><b>Стили не грузятся.</b> Забыли <code>collectstatic</code> либо путь в <code>alias</code> не совпадает с <code>STATIC_ROOT</code>.</p>
+              <p><b>Сайт работает, но падает через сутки.</b> Обычно заканчивается память: проверьте число воркеров и размер базы.</p>
+
+              <h2>Что дальше</h2>
+              <p>Если сервер ещё не настроен, начните с <a href="./ustanovka.html">установки Django</a>. Разобраться в данных поможет статья <a href="./models-i-orm.html">модели и ORM</a>, в маршрутах — <a href="./views-i-urls.html">views и URL</a>.</p>
+
+              <h3>Нужен сайт на Django, а не статья?</h3>
+              <p>Сделаю проект под ключ: модели данных, админка, интеграции с 1С и оплатой, REST API, деплой на ваш сервер с HTTPS и резервными копиями. С 2009 года, по договору, с поддержкой после запуска.</p>
+              <p><a href="../index.html#contact" class="btn">ОБСУДИТЬ ПРОЕКТ</a></p>
+              <p>Полезно по теме: <a href="./index.html">Django: обзор</a>, <a href="./models-i-orm.html">модели</a>, <a href="./views-i-urls.html">views и URL</a>, <a href="../index.html#pricing">цены</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="footer-info">
+                  <h3>Герасимов Сергей</h3>
+                  <p>Разрабатываю сайты в соответствии с вашими пожеланиями и задачами. Оказываю услуги по продвижению в поиске и социальных сетях.</p>
+                </div>
+                <div class="footer-newsletter">
+                  <h4>Станьте подписчиком</h4>
+                  <p>Чтобы быть в курсе новостей и услуг, подпишитесь на информационную рассылку сайта.</p>
+                  <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
+                    <input type="email" placeholder="Ваш Email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Подписаться">
+                  </form>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="footer-links">
+                  <h4>Полезные ссылки</h4>
+                  <ul>
+                    <li><a href="../index.html#about">ОБО МНЕ</a></li>
+                    <li><a href="../index.html#features">УСЛУГИ</a></li>
+                    <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
+                    <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
+                    <li><a href="../html/index.html">ПРО HTML</a></li>
+                    <li><a href="../blogcss/index.html">ПРО CSS</a></li>
+                    <li><a href="./index.html">ПРО DJANGO</a></li>
+                  </ul>
+                </div>
+                <div class="footer-links">
+                  <h4 id="contacts">Контакты</h4>
+                  <p>
+                    Московская область <br>
+                    г. Домодедово<br>
+                    Студия создания сайтов <br><b>MAJORSKY.RU</b><br>
+                    <strong>Tел.:&nbsp;&nbsp;</strong><span class="reverse">85-68-111 (629) 7+</span><br>
+                    <strong>Email:&nbsp;&nbsp;</strong><span class="reverse">ur.kb@svomisareg</span>
+                  </p>
+                </div>
+                <div class="social-links">
+                  <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                  <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div id="form" class="form">
+              <h4>Обратная связь</h4>
+              <p>Отправьте сообщение с описанием вопроса — отвечу как можно быстрее.</p>
+              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXKnUqQ2p1b1DaUr1I2jGpf1lQzoZvXSUGaAZZWyYgu1MAIA/formResponse" method="POST" id="mG61Hd" role="form" class="contactForm" aria-label="Форма обратной связи">
+                <div class="form-group">
+                  <input type="text" name="entry.55319827" class="form-control" id="name" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
+                  <div class="validation" style="display: block;"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="entry.2116619503" class="form-control" id="email" placeholder="Ваш Email" aria-label="Ваш email" autocomplete="email" data-rule="email" data-msg="Укажите корректный email">
+                  <div class="validation" style="display: block;"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="entry.1080093215" class="form-control" id="subject" placeholder="Тема сообщения" aria-label="Тема сообщения" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
+                  <div class="validation" style="display: block;"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="entry.888071640" rows="5" data-rule="required" data-msg="Напишите сообщение" placeholder="Сообщение" aria-label="Сообщение"></textarea>
+                  <div class="validation" style="display: block;"></div>
+                </div>
+                <div id="sendmessage">Сообщение отправлено. Спасибо!</div>
+                <div id="errormessage"></div>
+                <div class="text-center"><button type="submit" title="Отправить сообщение">Отправить сообщение</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Designed by <a href="https://majorsky.ru/">MAJORSKY</a> <span id="year">2026</span>
+      </div>
+      <div class="credits"></div>
+    </div>
+  </footer>
+
+  <a href="https://api.whatsapp.com/send?phone=79261118658" class="whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
+  <a href="#header" class="back-to-top" style="display: inline;" aria-label="Наверх"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <script src="../html/lib/jquery/jquery.min.js"></script>
+  <script src="../html/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="../html/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../html/lib/easing/easing.min.js"></script>
+  <script src="../html/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="../html/lib/wow/wow.min.js"></script>
+  <script src="../html/lib/waypoints/waypoints.min.js"></script>
+  <script src="../html/lib/counterup/counterup.min.js"></script>
+  <script src="../html/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../html/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="../html/lib/lightbox/js/lightbox.min.js"></script>
+  <script src="../html/contactform/contactform.js"></script>
+  <script src="../html/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
