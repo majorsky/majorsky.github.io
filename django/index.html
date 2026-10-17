@@ -8,7 +8,8 @@
   <link rel="canonical" href="https://majorsky.ru/django/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Сергей Герасимов">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="geo.region" content="RU-MOS">
+  <meta name="geo.placename" content="Домодедово">
   <meta name="google-site-verification" content="tKtWNXcnSiuNHBDz3rdULe91zQbMqUmTJScr9RaGvlM" />
   <meta name="yandex-verification" content="04fe22676397dea3" />
 
@@ -21,43 +22,31 @@
   <meta property="og:image" content="https://majorsky.ru/assets/img/msky-code.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <link href="../html/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../html/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="../html/lib/animate/animate.min.css" rel="stylesheet">
-  <link href="../html/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="../html/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="../html/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
 
-  <link href="../html/css/style.css" rel="stylesheet">
-  <link href="../html/css/form.css" rel="stylesheet">
+  <!-- AdSense убран: рекламных блоков на сайте нет -->
 
-  <!-- AdSense убран: рекламных блоков на сайте нет, скрипт только замедлял загрузку -->
-
-  <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function (m, e, t, r, i, k, a) {
       m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
       m[i].l = 1 * new Date();
       k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-    ym(52364206, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true
-    });
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(52364206, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/52364206" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
 
   <script type="application/ld+json">
   {
@@ -87,32 +76,21 @@
 </head>
 
 <body>
-  <header id="header">
-    <div id="topbar">
-      <div class="container">
-        <div class="social-links">
-          <i class="ion-ios-telephone">&nbsp;&nbsp;<b><span class="reverse">85-68-111 (629) 7+</span></b></i>
-          <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-          <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-          <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="logo float-left">
-        <a href="../index.html" class="scrollto"><img src="../html/img/logo.png" alt="MAJORSKY.RU — на главную" class="img-fluid"></a>
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <h1><a href="../index.html"><span>WWW.MAJORSKY.RU</span></a></h1>
       </div>
 
-      <nav class="main-nav float-right d-none d-lg-block" aria-label="Основная навигация">
+      <nav id="navbar" class="navbar" aria-label="Основная навигация">
         <ul>
-          <li class="active"><a href="../index.html#hero">ГЛАВНАЯ</a></li>
-          <li><a href="../index.html#about">ОБО МНЕ</a></li>
-          <li><a href="../index.html#features">УСЛУГИ</a></li>
-          <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
-          <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
-          <li><a href="../index.html#team">КОМАНДА</a></li>
-          <li class="drop-down"><a href="#">БЛОГ</a>
+          <li><a class="nav-link" href="../index.html#hero">ГЛАВНАЯ</a></li>
+          <li><a class="nav-link" href="../index.html#about">ОБО МНЕ</a></li>
+          <li><a class="nav-link" href="../index.html#features">УСЛУГИ</a></li>
+          <li><a class="nav-link" href="../index.html#gallery">ПОРТФОЛИО</a></li>
+          <li><a class="nav-link" href="../index.html#team">КОМАНДА</a></li>
+          <li><a class="nav-link" href="../index.html#pricing">ЦЕНЫ</a></li>
+          <li class="dropdown"><a href="#"><span>БЛОГ</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="../html/index.html">Про HTML</a></li>
               <li><a href="../blogcss/index.html">Про CSS</a></li>
@@ -120,83 +98,101 @@
               <li><a href="../video/index.html">Видео</a></li>
             </ul>
           </li>
-          <li><a href="../index.html#contact">КОНТАКТЫ</a></li>
+          <li><a class="nav-link" href="../index.html#contact">КОНТАКТЫ</a></li>
         </ul>
+        <i class="bi bi-list mobile-nav-toggle" role="button" tabindex="0" aria-label="Открыть меню"></i>
       </nav>
     </div>
   </header>
 
-  <section id="intro" class="clearfix">
-    <div class="container d-flex h-100">
-      <div class="row justify-content-center align-self-center">
-        <div class="col-md-6 intro-info order-md-first order-last">
-          <h2>DJANGO: ЧТО ЭТО И С ЧЕГО <span>НАЧАТЬ</span></h2>
+  <section id="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out">
+            <h1>ПРО <span>DJANGO</span></h1>
+            <h2>ЧТО ЭТО ТАКОЕ И С ЧЕГО НАЧАТЬ</h2>
+            <div class="text-center text-lg-start">
+              <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 intro-img order-md-last order-first">
-          <img src="../html/img/intro-img.svg" alt="Django — фреймворк для сайтов на Python" class="img-fluid">
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Django — фреймворк для сайтов на Python">
         </div>
       </div>
     </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+    </svg>
   </section>
 
   <main id="main">
-    <section id="about">
+    <section id="article" class="about">
       <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Django: что это и с чего начать</h2>
+          <p>Полное руководство для начинающих</p>
+        </div>
+
         <div class="row">
-          <div class="col-lg-8 col-md-10">
-            <div class="about-content">
-              <h2>Что такое Django</h2>
+          <div class="col-lg-10 mx-auto">
+            <div class="about-content" data-aos="fade-up">
+
+              <h3>Что такое Django</h3>
               <p>Django — это фреймворк для веб-приложений на Python. Он берёт на себя типовую рутину: маршрутизацию адресов, работу с базой данных, формы, авторизацию, админку и защиту от основных атак. Разработчику остаётся описать предметную область — остальное уже собрано.</p>
               <p>Главная причина, по которой Django выбирают: скорость выхода в продакшн. Проект, где нужно завести пользователей, каталог, админку и API, на «голом» Python пишется месяцами, а на Django — неделями.</p>
 
-              <h2>Как устроен MTV</h2>
+              <h3>Как устроен MTV</h3>
               <p>Вместо классического MVC Django использует MTV — Model, Template, View. Логика простая:</p>
               <ul>
-                <li><i class="ion-android-checkmark-circle"></i> <b>Model</b> — описание данных. Один класс Python превращается в таблицу в базе, а миграции создаются автоматически.</li>
-                <li><i class="ion-android-checkmark-circle"></i> <b>Template</b> — HTML с шаблонными тегами. Отвечает только за то, как данные выглядят.</li>
-                <li><i class="ion-android-checkmark-circle"></i> <b>View</b> — функция или класс, который получает запрос, забирает данные из моделей и отдаёт ответ.</li>
+                <li><i class="bi bi-check"></i> <b>Model</b> — описание данных. Один класс Python превращается в таблицу в базе, а миграции создаются автоматически.</li>
+                <li><i class="bi bi-check"></i> <b>Template</b> — HTML с шаблонными тегами. Отвечает только за то, как данные выглядят.</li>
+                <li><i class="bi bi-check"></i> <b>View</b> — функция или класс, который получает запрос, забирает данные из моделей и отдаёт ответ.</li>
               </ul>
               <p>Между ними работает URLconfs — список адресов и привязанных к ним представлений. Про это подробно в статье <a href="./views-i-urls.html">Views и URL в Django</a>.</p>
 
-              <h2>Когда Django — правильный выбор</h2>
+              <h3>Когда Django — правильный выбор</h3>
               <ul>
-                <li><i class="ion-android-checkmark-circle"></i> Нужна админка «из коробки»: контент-сайт, каталог, внутренний сервис.</li>
-                <li><i class="ion-android-checkmark-circle"></i> Много сущностей и связей: заказы, клиенты, статусы, документы.</li>
-                <li><i class="ion-android-checkmark-circle"></i> Команда знает Python: язык один и для бэкенда, и для скриптов, и для аналитики.</li>
-                <li><i class="ion-android-checkmark-circle"></i> Нужна встроенная безопасность: CSRF, XSS, SQL-инъекции закрыты по умолчанию.</li>
+                <li><i class="bi bi-check"></i> Нужна админка «из коробки»: контент-сайт, каталог, внутренний сервис.</li>
+                <li><i class="bi bi-check"></i> Много сущностей и связей: заказы, клиенты, статусы, документы.</li>
+                <li><i class="bi bi-check"></i> Команда знает Python: язык один и для бэкенда, и для скриптов, и для аналитики.</li>
+                <li><i class="bi bi-check"></i> Нужна встроенная безопасность: CSRF, XSS и SQL-инъекции закрыты по умолчанию.</li>
               </ul>
 
-              <h2>Когда лучше взять другое</h2>
+              <h3>Когда лучше взять другое</h3>
               <ul>
-                <li><i class="ion-android-checkmark-circle"></i> Маленький лендинг или визитка — Django избыточен, хватит статики.</li>
-                <li><i class="ion-android-checkmark-circle"></i> Нужна предельная скорость на тысячах запросов с простой логикой — смотрите FastAPI или Go.</li>
-                <li><i class="ion-android-checkmark-circle"></i> Проект из трёх страниц и одной формы — CMS будет дешевле.</li>
+                <li><i class="bi bi-check"></i> Маленький лендинг или визитка — Django избыточен, хватит статики.</li>
+                <li><i class="bi bi-check"></i> Нужна предельная скорость на тысячах запросов с простой логикой — смотрите FastAPI или Go.</li>
+                <li><i class="bi bi-check"></i> Проект из трёх страниц и одной формы — CMS обойдётся дешевле.</li>
               </ul>
 
-              <h2>План: пять шагов до первого проекта</h2>
-              <p>Ниже — порядок, который я рекомендую новичкам. Каждый шаг заканчивается работающим результатом, а не конспектом.</p>
+              <h3>План: пять шагов до первого проекта</h3>
+              <p>Порядок, который я рекомендую новичкам. Каждый шаг заканчивается работающим результатом, а не конспектом.</p>
               <ol>
-                <li><b>Установка.</b> Python, виртуальное окружение, <code>pip install django</code>, первый <code>runserver</code>. Инструкция: <a href="./ustanovka.html">Установка Django на Windows</a>.</li>
+                <li><b>Установка.</b> Python, виртуальное окружение, первый запуск сервера. Инструкция: <a href="./ustanovka.html">Установка Django на Windows</a>.</li>
                 <li><b>Модели.</b> Описать две-три сущности, сделать миграции, научиться писать запросы через ORM. Статья: <a href="./models-i-orm.html">Модели Django и ORM</a>.</li>
                 <li><b>Маршруты и представления.</b> Связать адреса с функциями, отдать первый шаблон. Статья: <a href="./views-i-urls.html">Views и URL в Django</a>.</li>
                 <li><b>Админка и формы.</b> Зарегистрировать модели в админке, добавить форму заявки с валидацией.</li>
                 <li><b>Деплой.</b> PostgreSQL, Gunicorn, Nginx, HTTPS. Статья: <a href="./deploy.html">Деплой Django на VPS</a>.</li>
               </ol>
 
-              <h2>Частые ошибки новичков</h2>
+              <h3>Частые ошибки новичков</h3>
               <p><b>Писать бизнес-логику во view.</b> Через месяц такая функция на 300 строк превращается в нечитаемое полотно. Логику выносят в сервисные функции или методы моделей.</p>
-              <p><b>Игнорировать миграции.</b> Правки в базе руками ломают схему: <code>makemigrations</code> перестаёт видеть расхождения. Всё изменение структуры — только через миграции.</p>
-              <p><b>Разворачивать с <code>DEBUG=True</code>.</b> Это не «чуть медленнее», а публичный доступ к настройкам и трассировкам. Подробнее — в статье про деплой.</p>
-              <p><b>Не читать документацию.</b> У Django одна из лучших документаций в вебе, и почти любой вопрос там разобран лучше, чем в пересказах.</p>
-
-              <h2>С чего продолжить</h2>
-              <p>Если вы только начинаете — идите по порядку: <a href="./ustanovka.html">установка</a>, затем <a href="./models-i-orm.html">модели</a>, затем <a href="./views-i-urls.html">маршруты</a>. Когда проект заработает локально, вернитесь к статье про <a href="./deploy.html">деплой</a>.</p>
-              <p>Если нужен готовый сайт, а не самостоятельная разработка, — посмотрите <a href="../index.html#pricing">цены на разработку</a> и <a href="../index.html#features">состав работ</a>.</p>
+              <p><b>Игнорировать миграции.</b> Правки в базе руками ломают схему: миграции перестают видеть расхождения. Всё изменение структуры — только через них.</p>
+              <p><b>Разворачивать с включённым режимом отладки.</b> Это не «чуть медленнее», а публичный доступ к настройкам и трассировкам. Подробнее — в статье про деплой.</p>
+              <p><b>Не читать документацию.</b> У Django одна из лучших документаций в вебе, почти любой вопрос разобран там лучше, чем в пересказах.</p>
 
               <h3>Нужен сайт на Django, а не статья?</h3>
               <p>Сделаю проект под ключ: модели данных, админка, интеграции с 1С и оплатой, REST API, деплой на ваш сервер с HTTPS и резервными копиями. С 2009 года, по договору, с поддержкой после запуска.</p>
-              <p><a href="../index.html#contact" class="btn">ОБСУДИТЬ ПРОЕКТ</a></p>
-              <p>Полезно по теме: <a href="./ustanovka.html">установка Django</a>, <a href="./models-i-orm.html">модели и ORM</a>, <a href="./views-i-urls.html">views и URL</a>, <a href="./deploy.html">деплой</a>.</p>
+              <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+              <p>Полезно по теме: <a href="./ustanovka.html">установка Django</a>, <a href="./models-i-orm.html">модели и ORM</a>, <a href="./views-i-urls.html">views и URL</a>, <a href="./deploy.html">деплой</a>, <a href="../index.html#pricing">цены на разработку</a>.</p>
             </div>
           </div>
         </div>
@@ -204,82 +200,55 @@
     </section>
   </main>
 
-  <footer id="footer" class="section-bg">
+  <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="footer-info">
-                  <h3>Герасимов Сергей</h3>
-                  <p>Разрабатываю сайты в соответствии с вашими пожеланиями и задачами. Оказываю услуги по продвижению в поиске и социальных сетях.</p>
-                </div>
-                <div class="footer-newsletter">
-                  <h4>Станьте подписчиком</h4>
-                  <p>Чтобы быть в курсе новостей и услуг, подпишитесь на информационную рассылку сайта.</p>
-                  <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
-                    <input type="email" placeholder="Ваш Email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Подписаться">
-                  </form>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="footer-links">
-                  <h4>Полезные ссылки</h4>
-                  <ul>
-                    <li><a href="../index.html#about">ОБО МНЕ</a></li>
-                    <li><a href="../index.html#features">УСЛУГИ</a></li>
-                    <li><a href="../index.html#gallery">МОИ КЕЙСЫ</a></li>
-                    <li><a href="../index.html#testimonials">ОТЗЫВЫ</a></li>
-                    <li><a href="../html/index.html">ПРО HTML</a></li>
-                    <li><a href="../blogcss/index.html">ПРО CSS</a></li>
-                    <li><a href="./index.html">ПРО DJANGO</a></li>
-                  </ul>
-                </div>
-                <div class="footer-links">
-                  <h4 id="contacts">Контакты</h4>
-                  <p>
-                    Московская область <br>
-                    г. Домодедово<br>
-                    Студия создания сайтов <br><b>MAJORSKY.RU</b><br>
-                    <strong>Tел.:&nbsp;&nbsp;</strong><span class="reverse">85-68-111 (629) 7+</span><br>
-                    <strong>Email:&nbsp;&nbsp;</strong><span class="reverse">ur.kb@svomisareg</span>
-                  </p>
-                </div>
-                <div class="social-links">
-                  <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-                  <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                  <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>www.majorsky.ru</h3>
+              <p class="pb-3"><em>РАЗРАБОТКА И ПРОДВИЖЕНИЕ САЙТОВ</em></p>
+              <p>
+                Московская область,<br> г. Домодедово,<br> студия создания сайтов<br><br>
+                <strong>Тел.:</strong> <a class="text-reset text-decoration-none" href="tel:+79261118658">+7 926 111-86-58</a><br>
+                <strong>Email:</strong> <a class="text-reset text-decoration-none" href="mailto:gerasimovs@bk.ru">gerasimovs@bk.ru</a><br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="https://twitter.com/majorsky77" class="twitter" rel="noopener nofollow" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://facebook.com/webmsky" class="facebook" rel="noopener nofollow" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://instagram.com/majorsky" class="instagram" rel="noopener nofollow" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div id="form" class="form">
-              <h4>Обратная связь</h4>
-              <p>Отправьте сообщение с описанием вопроса — отвечу как можно быстрее.</p>
-              <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXKnUqQ2p1b1DaUr1I2jGpf1lQzoZvXSUGaAZZWyYgu1MAIA/formResponse" method="POST" id="mG61Hd" role="form" class="contactForm" aria-label="Форма обратной связи">
-                <div class="form-group">
-                  <input type="text" name="entry.55319827" class="form-control" id="name" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="name" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="entry.2116619503" class="form-control" id="email" placeholder="Ваш Email" aria-label="Ваш email" autocomplete="email" data-rule="email" data-msg="Укажите корректный email">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="entry.1080093215" class="form-control" id="subject" placeholder="Тема сообщения" aria-label="Тема сообщения" data-rule="minlen:4" data-msg="Укажите не меньше 4 символов">
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="entry.888071640" rows="5" data-rule="required" data-msg="Напишите сообщение" placeholder="Сообщение" aria-label="Сообщение"></textarea>
-                  <div class="validation" style="display: block;"></div>
-                </div>
-                <div id="sendmessage">Сообщение отправлено. Спасибо!</div>
-                <div id="errormessage"></div>
-                <div class="text-center"><button type="submit" title="Отправить сообщение">Отправить сообщение</button></div>
-              </form>
-            </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Полезные ссылки</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#hero">ГЛАВНАЯ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#about">ОБО МНЕ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#features">УСЛУГИ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#pricing">ЦЕНЫ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../index.html#gallery">ПОРТФОЛИО</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Блог</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="../html/index.html">Про HTML</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../blogcss/index.html">Про CSS</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./index.html">Про Django</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./ustanovka.html">Установка Django</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="./deploy.html">Деплой</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Подписаться</h4>
+            <p>Раз в месяц — короткое письмо о новых работах и полезных находках. Без спама.</p>
+            <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Подписка на новости">
+              <input type="email" name="email" aria-label="Ваш email для подписки" required><input type="submit" value="Отправить">
+            </form>
           </div>
         </div>
       </div>
@@ -287,29 +256,23 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Designed by <a href="https://majorsky.ru/">MAJORSKY</a> <span id="year">2026</span>
+        Designed by <a href="../index.html">@MAJORSKY</a>
       </div>
-      <div class="credits"></div>
+      <div class="credits">
+        &copy; <span id="year">2026</span>
+      </div>
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=79261118658" class="whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
-  <a href="#header" class="back-to-top" style="display: inline;" aria-label="Наверх"><i class="fa fa-chevron-up"></i></a>
+  <a href="../index.html#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="../html/lib/jquery/jquery.min.js"></script>
-  <script src="../html/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="../html/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../html/lib/easing/easing.min.js"></script>
-  <script src="../html/lib/mobile-nav/mobile-nav.js"></script>
-  <script src="../html/lib/wow/wow.min.js"></script>
-  <script src="../html/lib/waypoints/waypoints.min.js"></script>
-  <script src="../html/lib/counterup/counterup.min.js"></script>
-  <script src="../html/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="../html/lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="../html/lib/lightbox/js/lightbox.min.js"></script>
-  <script src="../html/contactform/contactform.js"></script>
-  <script src="../html/js/main.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script src="../assets/js/related.js"></script>
 
   <script>
