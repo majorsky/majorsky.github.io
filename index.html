@@ -34,7 +34,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://mc.yandex.ru">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Главная картинка грузится первой: она влияет на LCP -->
+  <link rel="preload" as="image" href="assets/img/msky-code.png" fetchpriority="high">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -42,13 +46,16 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <script data-ad-client="ca-pub-3197683217259668" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!--
+    AdSense убран: на сайте не было ни одного рекламного блока,
+    скрипт только добавлял ~200 КБ и тормозил загрузку.
+    Если монетизация понадобится — код возвращается в этот блок.
+  -->
 
   <!--
     Google Analytics 4.
@@ -264,7 +271,7 @@
 
         <div class="row">
           <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=Al1haCJ8MOo" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true" aria-label="Смотреть видео о разработке сайтов"></a>
+            <a href="https://www.youtube.com/watch?v=Al1haCJ8MOo" class="gallery-lightbox play-btn mb-4" data-autoplay="true" aria-label="Смотреть видео о разработке сайтов"></a>
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
@@ -864,8 +871,8 @@
             <!--
               Внимание: GitHub Pages не исполняет PHP, поэтому forms/contact.php не работал.
               Форма переведена на mailto: при отправке открывается почтовый клиент с готовым письмом.
-              Класс php-email-form убран специально — иначе validate.js перехватывает отправку
-              и пытается отправить AJAX-запрос на mailto, из-за чего письмо не открывается.
+              Класс php-email-form не нужен: форма отправляется через mailto,
+              AJAX-обработчик удалён, поэтому письмо просто открывается в почтовом клиенте.
               Вариант без почтового клиента — Formspree или FormSubmit (см. CHANGES.md).
             -->
             <form action="mailto:gerasimovs@bk.ru" method="post" enctype="text/plain" aria-label="Форма заявки">
@@ -971,7 +978,6 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
