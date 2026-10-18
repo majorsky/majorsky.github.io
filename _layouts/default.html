@@ -53,9 +53,10 @@
       #navbar .dropdown > ul { overflow: visible; }
       #navbar .dropdown li.dropdown-submenu { position: relative; }
       #navbar .dropdown li.dropdown-submenu > a::after {
-        content: "\203A";
-        float: right;
-        margin-left: 12px;
+        content: "\2039";
+        float: left;
+        margin-right: 10px;
+        margin-left: 0;
         opacity: .55;
       }
       #navbar .dropdown li.dropdown-submenu > ul {
@@ -64,7 +65,8 @@
         opacity: 0 !important;
         position: absolute;
         top: -8px;
-        left: 100%;
+        right: 100%;
+        left: auto;
         min-width: 230px;
         margin: 0;
         padding: 8px 0;
