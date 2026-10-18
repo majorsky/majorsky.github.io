@@ -1,0 +1,92 @@
+---
+layout: default
+title: Обработка формы на PHP: POST и валидация — majorsky.ru
+description: Как принять форму на PHP: метод POST, проверка полей, защита от CSRF и спама, отправка письма и сохранение в базу. Пример с кодом и разбор ошибок.
+permalink: /php/formy.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ФОРМЫ <span>НА PHP</span></h1>
+          <h2>POST, ВАЛИДАЦИЯ, ПИСЬМО</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Обработка формы на PHP">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Формы на PHP</h2>
+        <p>От разметки до письма в почте</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Разметка формы</h3>
+            <p class="ex">&lt;form action="/send.php" method="post"&gt;<br>&nbsp;&nbsp;&lt;input type="text" name="name" required&gt;<br>&nbsp;&nbsp;&lt;input type="email" name="email" required&gt;<br>&nbsp;&nbsp;&lt;textarea name="message"&gt;&lt;/textarea&gt;<br>&nbsp;&nbsp;&lt;button type="submit"&gt;Отправить&lt;/button&gt;<br>&lt;/form&gt;</p>
+            <p>Атрибут <code>name</code> обязателен — по нему PHP находит поле. <code>method="post"</code> не показывает данные в адресной строке и не ограничен длиной, как <code>get</code>.</p>
+
+            <h3>Приём данных</h3>
+            <p class="ex">if ($_SERVER['REQUEST_METHOD'] === 'POST') {<br>&nbsp;&nbsp;$name = trim($_POST['name'] ?? '');<br>&nbsp;&nbsp;$email = trim($_POST['email'] ?? '');<br>&nbsp;&nbsp;$message = trim($_POST['message'] ?? '');<br>}</p>
+            <p>Проверка метода отсекает прямые переходы на <code>/send.php</code>. <code>trim()</code> убирает пробелы, <code>?? ''</code> защищает от отсутствующего поля — иначе будет предупреждение о неопределённом индексе.</p>
+
+            <h3>Валидация</h3>
+            <p>Проверять нужно на сервере, а не только через атрибуты вроде <code>required</code>: их легко обойти, отправив запрос напрямую.</p>
+            <p class="ex">$errors = [];<br>if (mb_strlen($name) &lt; 2) $errors[] = "Укажите имя";<br>if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Неверный email";<br>if (mb_strlen($message) &lt; 10) $errors[] = "Короткое сообщение";</p>
+            <p>Для длины используйте <code>mb_strlen</code>, иначе русский текст посчитается по байтам и лимит сработает втрое раньше.</p>
+
+            <h3>Вывод обратно в форму</h3>
+            <p>Если есть ошибки, страницу показывают заново, а введённое сохраняют. Обязательно экранируйте при выводе:</p>
+            <p class="ex">&lt;input name="name" value="&lt;?= htmlspecialchars($name, ENT_QUOTES) ?&gt;"&gt;</p>
+            <p>Без <code>htmlspecialchars</code> пользователь может вписать в поле разметку и скрипт — это XSS.</p>
+
+            <h3>Отправка письма</h3>
+            <p class="ex">$to = "gerasimovs@bk.ru";<br>$subject = "Заявка с сайта";<br>$body = "Имя: $name\nEmail: $email\n\n$message";<br>$headers = "From: no-reply@majorsky.ru\r\nContent-Type: text/plain; charset=utf-8";<br><br>mail($to, $subject, $body, $headers);</p>
+            <p>Функция <code>mail()</code> отправляет письмо от имени сервера, поэтому домен должен иметь SPF и DKIM — иначе письма уезжают в спам. На реальном проекте лучше SMTP через PHPMailer.</p>
+
+            <h3>Защита от спама</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Скрытое поле-ловушка.</b> Человек его не видит, бот заполняет — форма отбрасывается.</li>
+              <li><i class="bi bi-check"></i> <b>CSRF-токен.</b> Одноразовый код в сессии, без которого форма не принимается.</li>
+              <li><i class="bi bi-check"></i> <b>Ограничение частоты.</b> Не больше одной заявки с одного IP в минуту.</li>
+              <li><i class="bi bi-check"></i> <b>Капча.</b> Крайняя мера, когда остальное не помогает.</li>
+            </ul>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Нет проверки метода.</b> Скрипт срабатывает при простом открытии адреса.</li>
+              <li><i class="bi bi-check"></i> <b>Данные вставляются в SQL без подготовки.</b> Прямая SQL-инъекция.</li>
+              <li><i class="bi bi-check"></i> <b>Вывод без экранирования.</b> XSS в поле «ваше сообщение».</li>
+              <li><i class="bi bi-check"></i> <b>Нет подтверждения.</b> Пользователь нажал кнопку и не понял, ушло ли письмо.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Подключу формы к почте, базе и CRM: валидация, антиспам, уведомления. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">PHP с нуля</a>, <a href="./sintaksis.html">синтаксис PHP</a>, <a href="./mysql-pdo.html">MySQL и PDO</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

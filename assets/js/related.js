@@ -33,7 +33,12 @@
     { u: "/javascript/funkcii.html", t: "Функции и замыкания" },
     { u: "/javascript/massivy.html", t: "Методы массивов" },
     { u: "/javascript/dom.html", t: "DOM и события" },
-    { u: "/javascript/async-await.html", t: "Промисы и async/await" }
+    { u: "/javascript/async-await.html", t: "Промисы и async/await" },
+    { u: "/php/", t: "PHP с нуля" },
+    { u: "/php/ustanovka.html", t: "Установка PHP на Windows" },
+    { u: "/php/sintaksis.html", t: "Синтаксис PHP" },
+    { u: "/php/formy.html", t: "Обработка форм на PHP" },
+    { u: "/php/mysql-pdo.html", t: "PHP и MySQL через PDO" }
   ];
 
   var host = document.querySelector(".about-content");

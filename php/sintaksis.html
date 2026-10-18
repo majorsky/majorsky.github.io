@@ -1,0 +1,89 @@
+---
+layout: default
+title: Синтаксис PHP: переменные, массивы, условия — majorsky.ru
+description: Базовый синтаксис PHP: переменные, типы, строки, массивы, условия и циклы, функции и включение файлов. Примеры кода и ошибки новичков.
+permalink: /php/sintaksis.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>СИНТАКСИС <span>PHP</span></h1>
+          <h2>ПЕРЕМЕННЫЕ, МАССИВЫ, ЦИКЛЫ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Синтаксис PHP">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Синтаксис PHP</h2>
+        <p>Минимум, чтобы писать код</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Теги и вывод</h3>
+            <p>Код живёт между <code>&lt;?php</code> и <code>?&gt;</code>. Всё вне них уходит в браузер как обычный HTML. Вывод — <code>echo</code> или <code>print</code>.</p>
+            <p class="ex">&lt;?php<br>$name = "Анна";<br>echo "Привет, {$name}";</p>
+
+            <h3>Переменные</h3>
+            <p>Начинаются с <code>$</code>, объявлять тип не нужно. Имена чувствительны к регистру: <code>$Name</code> и <code>$name</code> — разные переменные. В PHP 8 типы можно указывать явно, но это не обязательно.</p>
+            <p class="ex">$age = 30;         // целое<br>$price = 99.90;    // дробное<br>$active = true;    // булево<br>$tags = null;      // пусто</p>
+
+            <h3>Строки</h3>
+            <p>Одинарные кавычки не подставляют переменные, двойные — подставляют. Это не мелочь: <code>'$name'</code> выведет именно <code>$name</code>.</p>
+            <p class="ex">echo 'Привет, $name';   // Привет, $name<br>echo "Привет, $name";   // Привет, Анна</p>
+
+            <h3>Массивы</h3>
+            <p>В PHP один тип на списки и словари — <code>array</code>. Список создаётся через <code>[]</code>, словарь — с ключами.</p>
+            <p class="ex">$list = [1, 2, 3];<br>$user = ['name' =&gt; 'Анна', 'age' =&gt; 30];<br><br>echo $user['name'];<br>$list[] = 4;   // добавить в конец</p>
+
+            <h3>Условия и циклы</h3>
+            <p class="ex">if ($age &gt;= 18) {<br>&nbsp;&nbsp;echo "Взрослый";<br>} elseif ($age &gt; 0) {<br>&nbsp;&nbsp;echo "Ребёнок";<br>} else {<br>&nbsp;&nbsp;echo "Неизвестно";<br>}<br><br>foreach ($list as $item) {<br>&nbsp;&nbsp;echo $item;<br>}</p>
+            <p>Для словаря <code>foreach ($user as $key =&gt; $value)</code>. Цикл <code>for</code> нужен реже — обычно хватает <code>foreach</code>.</p>
+
+            <h3>Функции</h3>
+            <p class="ex">function sum(int $a, int $b): int {<br>&nbsp;&nbsp;return $a + $b;<br>}<br><br>echo sum(2, 3);</p>
+            <p>Типы в параметрах и возврате не обязательны, но с ними ошибки ловятся раньше.</p>
+
+            <h3>Подключение файлов</h3>
+            <p><code>include</code> подключает файл и продолжает работу при ошибке, <code>require</code> — останавливает. Для шапки, подвала и конфигурации используют <code>require_once</code>.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Забытая точка с запятой.</b> Сообщение указывает на следующую строку — ищите выше.</li>
+              <li><i class="bi bi-check"></i> <b>Одинарные кавычки вместо двойных.</b> Переменная не подставилась.</li>
+              <li><i class="bi bi-check"></i> <b>Сравнение через = вместо ==.</b> Первое присваивает, второе сравнивает.</li>
+              <li><i class="bi bi-check"></i> <b>Вывод до заголовков.</b> Любой <code>echo</code> до <code>header()</code> ломает редирект.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу серверную часть на PHP: формы, кабинет, API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">PHP с нуля</a>, <a href="./ustanovka.html">установка PHP</a>, <a href="./formy.html">формы</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

@@ -1,0 +1,89 @@
+---
+layout: default
+title: PHP и MySQL через PDO: подключение и запросы — majorsky.ru
+description: Как подключиться к MySQL из PHP через PDO, делать подготовленные запросы, выбирать данные и обрабатывать ошибки. Примеры и защита от инъекций.
+permalink: /php/mysql-pdo.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>PHP <span>И MYSQL</span></h1>
+          <h2>PDO И ПОДГОТОВЛЕННЫЕ ЗАПРОСЫ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="PHP и MySQL через PDO">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>MySQL через PDO</h2>
+        <p>Безопасные запросы без склейки строк</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Подключение</h3>
+            <p>PDO — единый интерфейс к разным базам. Подключение делается один раз и переиспользуется:</p>
+            <p class="ex">$dsn = 'mysql:host=localhost;dbname=blog;charset=utf8mb4';<br>$pdo = new PDO($dsn, 'root', '', [<br>&nbsp;&nbsp;PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,<br>&nbsp;&nbsp;PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,<br>]);</p>
+            <p><code>ERRMODE_EXCEPTION</code> — главное, что нужно включить: без него ошибки базы молча возвращают <code>false</code>, и вы часами ищете, почему данные не сохраняются.</p>
+
+            <h3>Почему не конкатенация</h3>
+            <p>Такой код опасен: если в <code>$id</code> придёт <code>1 OR 1=1</code>, вернутся все записи, а при <code>; DROP TABLE</code> — всё хуже.</p>
+            <p class="ex">// ТАК НЕЛЬЗЯ<br>$pdo-&gt;query("SELECT * FROM posts WHERE id = $id");</p>
+            <p>Подготовленный запрос отделяет структуру от данных: значение приходит как значение, а не как часть SQL.</p>
+
+            <h3>SELECT с параметрами</h3>
+            <p class="ex">$stmt = $pdo-&gt;prepare("SELECT * FROM posts WHERE id = ?");<br>$stmt-&gt;execute([$id]);<br>$post = $stmt-&gt;fetch();<br><br>if (!$post) { http_response_code(404); exit; }</p>
+            <p>Именованные параметры читаются лучше, когда их несколько:</p>
+            <p class="ex">$stmt = $pdo-&gt;prepare("SELECT * FROM posts WHERE status = :status AND year = :year");<br>$stmt-&gt;execute(['status' =&gt; 'published', 'year' =&gt; 2026]);</p>
+
+            <h3>Список строк</h3>
+            <p class="ex">$stmt = $pdo-&gt;query("SELECT id, title FROM posts ORDER BY created_at DESC");<br>$posts = $stmt-&gt;fetchAll();<br><br>foreach ($posts as $post) {<br>&nbsp;&nbsp;echo htmlspecialchars($post['title']);<br>}</p>
+            <p><code>query()</code> допустим только для запросов без пользовательских данных. Всё, что пришло из формы или адреса, идёт через <code>prepare</code>.</p>
+
+            <h3>INSERT и обновление</h3>
+            <p class="ex">$stmt = $pdo-&gt;prepare(<br>&nbsp;&nbsp;"INSERT INTO posts (title, body) VALUES (?, ?)"<br>);<br>$stmt-&gt;execute([$title, $body]);<br><br>$newId = $pdo-&gt;lastInsertId();</p>
+            <p>Для массовой вставки не делайте <code>execute</code> в цикле — оберните всё в транзакцию через <code>beginTransaction()</code> и <code>commit()</code>, иначе база получит сотни отдельных записей.</p>
+
+            <h3>Обработка ошибок</h3>
+            <p class="ex">try {<br>&nbsp;&nbsp;$stmt-&gt;execute([$id]);<br>} catch (PDOException $e) {<br>&nbsp;&nbsp;error_log($e-&gt;getMessage());<br>&nbsp;&nbsp;http_response_code(500);<br>&nbsp;&nbsp;echo "Ошибка сервера";<br>}</p>
+            <p>Текст исключения пишите в лог, а пользователю показывайте общую фразу. Подробности ошибки reveal структуру базы.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Конкатенация переменных в SQL.</b> SQL-инъекция в чистом виде.</li>
+              <li><i class="bi bi-check"></i> <b>Выключенные исключения.</b> Ошибка не видна, данные не сохраняются.</li>
+              <li><i class="bi bi-check"></i> <b>Вывод из базы без экранирования.</b> XSS через поле заголовка.</li>
+              <li><i class="bi bi-check"></i> <b>Соединение в каждом файле.</b> Сотни подключений вместо одного.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Спроектирую базу и напишу слой доступа без инъекций и дублирования. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">PHP с нуля</a>, <a href="./formy.html">формы на PHP</a>, <a href="../django/models-i-orm.html">ORM в Django</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

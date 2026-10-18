@@ -1,0 +1,90 @@
+---
+layout: default
+title: PHP с нуля: что это и как начать — majorsky.ru
+description: PHP — язык для серверной части сайтов. Разбираю, где он выполняется, что нужно для старта, как устроен запрос из браузера и когда PHP ещё уместен.
+permalink: /php/
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ПРО <span>PHP</span></h1>
+          <h2>ЧТО ЭТО И КАК НАЧАТЬ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="PHP — язык для серверной части сайта">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>PHP с нуля</h2>
+        <p>Серверный язык, на котором работает половина веба</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Что такое PHP</h3>
+            <p>PHP — серверный язык программирования. Браузер его не видит: код выполняется на сервере, а тот отдаёт уже готовый HTML. Именно так на сайте появляются формы, вход в личный кабинет и данные из базы.</p>
+            <p>На PHP работает около трёх четвертей сайтов, где вообще есть серверная часть, — в основном из-за WordPress, Bitrix и готовых хостингов, где он установлен по умолчанию.</p>
+
+            <h3>Как проходит запрос</h3>
+            <p>Браузер просит <code>/catalog.php</code>. Веб-сервер (Apache или Nginx) передаёт управление PHP, тот читает код, обращается к базе, собирает HTML и возвращает его. Браузер получает только результат — исходный код недоступен.</p>
+            <p class="ex">&lt;?php<br>echo "Привет, мир";<br>?&gt;</p>
+
+            <h3>Что нужно для старта</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>PHP 8.2+</b> — установщик или сборка XAMPP для Windows.</li>
+              <li><i class="bi bi-check"></i> <b>База MySQL или MariaDB</b> — почти любой пример это предполагает.</li>
+              <li><i class="bi bi-check"></i> <b>Редактор кода</b> — VS Code или PHPStorm.</li>
+              <li><i class="bi bi-check"></i> <b>Хостинг</b> — позже, для публикации. Локально хватит XAMPP.</li>
+            </ul>
+
+            <h3>Основы, без которых не двинуться</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Переменные</b> — начинаются со знака <code>$</code>: <code>$name = "Анна";</code></li>
+              <li><i class="bi bi-check"></i> <b>Типы</b> — строка, целое, дробное, массив, <code>null</code>; приведение часто неявное.</li>
+              <li><i class="bi bi-check"></i> <b>Массивы</b> — основа всего: и списки, и словари задаются одним типом.</li>
+              <li><i class="bi bi-check"></i> <b>Функции</b> — <code>function sum($a, $b) { return $a + $b; }</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Суперглобальные</b> — <code>$_GET</code>, <code>$_POST</code>, <code>$_SESSION</code> для данных запроса.</li>
+            </ul>
+
+            <h3>База данных</h3>
+            <p>Правильный путь — <b>PDO</b> с подготовленными запросами: он не даёт вставить SQL-код через поле формы.</p>
+            <p class="ex">$stmt = $pdo-&gt;prepare("SELECT * FROM posts WHERE id = ?");<br>$stmt-&gt;execute([$id]);<br>$post = $stmt-&gt;fetch();</p>
+            <p>Старые функции <code>mysql_*</code> удалены из языка ещё в PHP 7, а конкатенация переменных в запрос — прямой путь к SQL-инъекции.</p>
+
+            <h3>Фреймворк или чистый PHP</h3>
+            <p>Начинать стоит с чистого PHP: понять, что такое запрос, сессия и база. Дальше — Laravel или Symfony, где маршрутизация, шаблоны и работа с базой уже собраны. На WordPress пишут без фреймворка, но с его собственной архитектурой.</p>
+
+            <h3>Где PHP не подходит</h3>
+            <p>Высоконагруженные сервисы на миллионы запросов, задачи с длительными вычислениями и обменом в реальном времени лучше решать на Go, Python или Node.js. PHP хорош в веб-сайтах, админках, API средней нагрузки и там, где нужен дешёвый хостинг.</p>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу серверную часть на PHP или Laravel: формы, личный кабинет, интеграции с 1С и оплатой, API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="../wordpress/index.html">про WordPress</a>, <a href="../django/index.html">про Django</a>, <a href="../javascript/index.html">про JavaScript</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

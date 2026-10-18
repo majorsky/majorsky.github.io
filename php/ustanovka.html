@@ -1,0 +1,84 @@
+---
+layout: default
+title: Установка PHP на Windows: XAMPP и первый скрипт — majorsky.ru
+description: Как установить PHP на Windows через XAMPP и OpenServer, настроить localhost, проверить версию и запустить первый скрипт. Разбор частых ошибок.
+permalink: /php/ustanovka.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>УСТАНОВКА <span>PHP</span></h1>
+          <h2>XAMPP, LOCALHOST, ПЕРВЫЙ СКРИПТ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Установка PHP на Windows">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Установка PHP</h2>
+        <p>Сборка для Windows и первый запуск</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Не ставьте PHP отдельно</h3>
+            <p>Для обучения нужен не просто PHP, а связка: веб-сервер, PHP и MySQL. Собирать её вручную на Windows — полдня на настройку расширений. Проще взять готовую сборку: XAMPP, OpenServer или Laragon. Они кладут всё в одну папку и запускаются кнопкой.</p>
+
+            <h3>Шаг 1. Скачать и установить</h3>
+            <p>Скачайте XAMPP с официального сайта, выберите PHP 8.2 или новее. Установщик спросит папку — оставьте <code>C:\xampp</code>. Антивирус иногда ругается на <code>httpd.exe</code>: это ложное срабатывание, добавьте папку в исключения.</p>
+
+            <h3>Шаг 2. Запустить сервер</h3>
+            <p>Откройте XAMPP Control Panel и нажмите <b>Start</b> у модулей Apache и MySQL. Оба должны стать зелёными. Если Apache не стартует — почти всегда занят порт 80.</p>
+
+            <h3>Шаг 3. Проверить</h3>
+            <p>Откройте <code>http://localhost</code> — увидите стартовую страницу XAMPP. Там же ссылка <code>phpinfo()</code>: она показывает версию, загруженные расширения и пути.</p>
+            <p>Версия PHP в консоли проверяется командой:</p>
+            <p class="ex">C:\xampp\php\php.exe -v</p>
+
+            <h3>Шаг 4. Первый скрипт</h3>
+            <p>Файлы сайта лежат в <code>C:\xampp\htdocs</code>. Создайте там файл <code>index.php</code>:</p>
+            <p class="ex">&lt;?php<br>echo "Привет, мир";</p>
+            <p>Сохраните в кодировке UTF-8 без BOM и обновите <code>http://localhost</code>. Если видите текст вместо кода — всё работает.</p>
+
+            <h3>Шаг 5. База данных</h3>
+            <p>phpMyAdmin открывается по адресу <code>http://localhost/phpmyadmin</code>. Стандартный пользователь — <code>root</code> без пароля: это нормально для локальной машины и категорически недопустимо на хостинге.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Apache не запускается.</b> Порт 80 занят Skype или IIS. Смените порт в настройках Apache или закройте программу.</li>
+              <li><i class="bi bi-check"></i> <b>Страница показывает код.</b> Файл открыт как <code>.html</code> или сохранён вне <code>htdocs</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Кракозябры вместо текста.</b> Нет <code>charset=utf-8</code> или файл сохранён в другой кодировке.</li>
+              <li><i class="bi bi-check"></i> <b>Не найден драйвер MySQL.</b> В <code>php.ini</code> не включено расширение <code>pdo_mysql</code> — уберите точку с запятой в начале строки.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу серверную часть на PHP: формы, личный кабинет, интеграции, API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">PHP с нуля</a>, <a href="./formy.html">формы</a>, <a href="../wordpress/index.html">про WordPress</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}
