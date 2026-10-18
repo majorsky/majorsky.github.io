@@ -45,16 +45,19 @@
     .about-content ol{padding-left:22px}
     .about-content ol li{margin-bottom:8px}
 
-    /* Плавное появление и исчезновение мобильного меню */
+    /* Плавное появление и исчезновение мобильного меню.
+       Анимируем только список ссылок: кнопка-гамбургер лежит внутри #navbar
+       и должна оставаться видимой. */
     @media (max-width: 991px) {
-      #navbar {
+      #navbar > ul {
         transition: opacity .28s ease, transform .28s ease, visibility .28s;
+      }
+      #navbar:not(.navbar-mobile) > ul {
         opacity: 0;
         transform: translateY(-10px);
         visibility: hidden;
       }
-      #navbar.navbar-mobile {
-        display: block;
+      #navbar.navbar-mobile > ul {
         opacity: 1;
         transform: translateY(0);
         visibility: visible;
