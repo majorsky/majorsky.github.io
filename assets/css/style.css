@@ -411,10 +411,10 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-animation: none;
     animation: none;
   }
-  #majorsky .hero-img {
+  #majorsky .majorsky-img {
     text-align: center;
   }
-  #majorsky .hero-img img {
+  #majorsky .majorsky-img img {
     max-width: 50%;
   }
   #majorsky h1 {
@@ -429,7 +429,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 @media (max-width: 575px) {
-  #majorsky .hero-img img {
+  #majorsky .majorsky-img img {
     width: 80%;
   }
 }
@@ -451,7 +451,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-10px);
   }
 }
-.hero-waves {
+.majorsky-waves {
   display: block;
   margin-top: 60px;
   width: 100%;
