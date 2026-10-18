@@ -44,6 +44,22 @@
     .about-content ul li i{position:absolute;left:0;top:3px}
     .about-content ol{padding-left:22px}
     .about-content ol li{margin-bottom:8px}
+
+    /* Плавное появление и исчезновение мобильного меню */
+    @media (max-width: 991px) {
+      #navbar {
+        transition: opacity .28s ease, transform .28s ease, visibility .28s;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+      }
+      #navbar.navbar-mobile {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+    }
   </style>
 
   <script type="text/javascript">
@@ -63,7 +79,7 @@
   {{ content }}
   {% include footer.html %}
 
-  <a href="{{ '/index.html' | relative_url }}#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#hero" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
   <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}"></script>
