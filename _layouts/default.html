@@ -45,6 +45,9 @@
     .about-content ol{padding-left:22px}
     .about-content ol li{margin-bottom:8px}
 
+    /* Прелоадер: анимация короче на ~80% (было ~0.6s) */
+    #preloader { transition-duration: .12s !important; }
+
     /* Плавное появление и исчезновение мобильного меню.
        Анимируем только список ссылок: кнопка-гамбургер лежит внутри #navbar
        и должна оставаться видимой. */
@@ -92,5 +95,18 @@
   <script src="{{ '/assets/vendor/swiper/swiper-bundle.min.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/related.js' | relative_url }}"></script>
+
+  <script>
+    /* Снимаем прелоадер по готовности DOM, а не после полной загрузки
+       картинок и шрифтов — это и есть основная часть ожидания. */
+    document.addEventListener('DOMContentLoaded', function () {
+      var pre = document.getElementById('preloader');
+      if (pre) {
+        setTimeout(function () {
+          if (pre.parentNode) { pre.remove(); }
+        }, 120);
+      }
+    });
+  </script>
 </body>
 </html>
