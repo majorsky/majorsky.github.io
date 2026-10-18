@@ -44,6 +44,47 @@ permalink: /blogcss/examples.html
             <h3>Идея</h3>
             <p>Соберём персонажа из обычных блоков: голова, глаза, тело. Каждый элемент — <code>div</code> с абсолютным позиционированием, а движение задаётся двумя анимациями: покачивание тела и «моргание» глаз.</p>
 
+            <style>
+              .eve-demo { display: flex; justify-content: center; padding: 24px 0 12px; }
+              .eve-demo .eve { position: relative; width: 180px; height: 210px; animation: eveMotion 2s ease-in-out infinite; }
+              .eve-demo .eve-face {
+                position: absolute; top: 20px; left: 45px; width: 90px; height: 78px;
+                background: #fff; border: 3px solid #2b2b52;
+                border-radius: 100px 100px 45px 45px;
+              }
+              .eve-demo .eve-body {
+                position: absolute; top: 95px; left: 25px; width: 130px; height: 95px;
+                background: #ff6b5c; border-radius: 60px 60px 20px 20px;
+              }
+              .eve-demo .left-eye, .eve-demo .right-eye {
+                position: absolute; top: 32px; width: 20px; height: 13px;
+                background: #067fe2; border-radius: 50%;
+                animation: eveBlink 2s infinite;
+              }
+              .eve-demo .left-eye { left: 18px; }
+              .eve-demo .right-eye { right: 18px; }
+              @keyframes eveMotion {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-16px); }
+              }
+              @keyframes eveBlink {
+                0%, 30%, 36%, 100% { transform: scaleY(1); }
+                33%, 34% { transform: scaleY(.1); }
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .eve-demo .eve, .eve-demo .left-eye, .eve-demo .right-eye { animation: none; }
+              }
+            </style>
+            <div class="eve-demo" aria-hidden="true">
+              <div class="eve">
+                <div class="eve-face">
+                  <div class="left-eye"></div>
+                  <div class="right-eye"></div>
+                </div>
+                <div class="eve-body"></div>
+              </div>
+            </div>
+
             <h3>HTML-разметка</h3>
             <p class="ex">&lt;div class="eve"&gt;<br>&nbsp;&nbsp;&lt;div class="eve-face"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="left-eye"&gt;&lt;div class="pupil"&gt;&lt;/div&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="right-eye"&gt;&lt;div class="pupil"&gt;&lt;/div&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div class="eve-body"&gt;&lt;/div&gt;<br>&lt;/div&gt;</p>
 
