@@ -1,0 +1,85 @@
+---
+layout: default
+title: Плагины WordPress: какие нужны и сколько — majorsky.ru
+description: Обязательные плагины WordPress и во что превращается сайт с тридцатью расширениями. Как выбрать кэш, SEO, формы и бэкапы без конфликтов.
+permalink: /wordpress/plugins.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ПЛАГИНЫ <span>WORDPRESS</span></h1>
+          <h2>КАКИЕ НУЖНЫ И СКОЛЬКО</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Плагины WordPress">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Плагины WordPress</h2>
+        <p>Минимум, который реально нужен</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Сколько плагинов нормально</h3>
+            <p>Пять-семь для типового сайта. Десять — если есть магазин и сложные формы. Тридцать — почти гарантированные проблемы: конфликты стилей, дублирующиеся скрипты, замедление админки и рост нагрузки на сервер.</p>
+            <p>Дело не в количестве как таковом, а в том, что каждый плагин добавляет запросы к базе, хуки и файлы. Сайт с двадцатью плагинами на дешёвом хостинге падает при первом же всплеске трафика.</p>
+
+            <h3>Обязательный набор</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Кэширование</b> — WP Super Cache, W3 Total Cache или встроенный кэш хостинга. Ускоряет в разы за счёт отдачи готового HTML.</li>
+              <li><i class="bi bi-check"></i> <b>SEO</b> — Yoast или Rank Math. Мета-теги, карта сайта, robots, хлебные крошки.</li>
+              <li><i class="bi bi-check"></i> <b>Формы</b> — Contact Form 7 или WPForms. Заявки на почту и в базу.</li>
+              <li><i class="bi bi-check"></i> <b>Бэкапы</b> — UpdraftPlus. Автоматические копии файлов и базы в облако.</li>
+              <li><i class="bi bi-check"></i> <b>Антиспам</b> — Akismet или антиспам-плагин для форм.</li>
+            </ul>
+            <p>Этого достаточно для блога, визитки и небольшого корпоративного сайта. Всё остальное — по конкретной задаче.</p>
+
+            <h3>Как выбрать плагин под задачу</h3>
+            <p>Четыре критерия, которые отсеивают восемь из десяти вариантов:</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Обновлялся в последние полгода.</b> Заброшенный плагин — это открытая дыра.</li>
+              <li><i class="bi bi-check"></i> <b>Совместим с вашей версией WordPress и PHP.</b> Указано на странице плагина.</li>
+              <li><i class="bi bi-check"></i> <b>Больше 10 000 установок</b> и внятные отзывы — есть шанс, что проблемы уже нашли и исправили.</li>
+              <li><i class="bi bi-check"></i> <b>Не дублирует уже установленное.</b> Два SEO-плагина одновременно — классический способ сломать разметку.</li>
+            </ul>
+
+            <h3>Опасные категории</h3>
+            <p><b>Конструкторы страниц</b> — Elementor, WPBakery. Добавляют десятки файлов, но дают визуальную сборку. Оправданы, если клиент сам правит страницы; иначе лучше обычная тема.</p>
+            <p><b>«Всё в одном»</b> — плагины, обещающие SEO, кэш, безопасность и бэкап в одном. Обычно делают всё посредственно и конфликтуют со специализированными.</p>
+            <p><b>Nulled-версии</b> — взломанные платные плагины с торрентов. Внутри почти всегда бэкдор. Экономия 3000 ₽ обходится в восстановление сайта.</p>
+
+            <h3>Порядок обслуживания</h3>
+            <p>Раз в месяц: обновить ядро, тему и плагины, проверить, что сайт открывается, и сделать резервную копию. Перед обновлением — копия, после — проверка форм и корзины. Если после обновления что-то поехало, откат делается из копии, а не поиском «почему сломалось».</p>
+
+            <h3>Нужен сайт на WordPress, а не статья?</h3>
+            <p>Настрою сайт с минимальным набором расширений: быстрый, без конфликтов и с автоматическими копиями. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">WordPress с нуля</a>, <a href="./ustanovka.html">установка WordPress</a>, <a href="../django/index.html">про Django</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

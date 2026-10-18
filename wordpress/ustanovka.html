@@ -1,0 +1,91 @@
+---
+layout: default
+title: Установка WordPress на хостинг: пошагово — majorsky.ru
+description: Как установить WordPress на хостинг: выбор тарифа, установка в один клик и вручную, wp-config.php, настройка постоянных ссылок и первый вход в админку.
+permalink: /wordpress/ustanovka.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>УСТАНОВКА <span>WORDPRESS</span></h1>
+          <h2>ХОСТИНГ, WP-CONFIG, АДМИНКА</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Установка WordPress на хостинг">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Установка WordPress</h2>
+        <p>От выбора хостинга до первого поста</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Шаг 0. Что нужно заранее</h3>
+            <p>Домен, хостинг с PHP 8.1+ и MySQL 5.7+, доступ к панели управления. Для старта хватает тарифа за 200–300 ₽ в месяц: 1 ГБ памяти и 10 ГБ диска. Не берите самый дешёвый тариф «без MySQL» — WordPress без базы не заработает.</p>
+
+            <h3>Вариант 1. Установка в один клик</h3>
+            <p>Почти все хостинги дают кнопку «Установить WordPress» в панели (cPanel, ISPmanager, Timeweb, Beget). Выбираете домен, придумываете логин и пароль администратора, ждёте минуту. Дальше можно переходить к настройке — движок уже стоит.</p>
+
+            <h3>Вариант 2. Вручную</h3>
+            <p>Скачайте архив с <code>wordpress.org</code>, распакуйте в корень сайта через файловый менеджер или FTP. Создайте базу и пользователя в панели, затем откройте адрес сайта в браузере — запустится мастер установки. Он спросит:</p>
+            <ul>
+              <li><i class="bi bi-check"></i> имя базы, пользователя и пароль;</li>
+              <li><i class="bi bi-check"></i> префикс таблиц — оставьте не <code>wp_</code>, а что-то своё, например <code>msk_</code>. Это мелочь, но она усложняет жизнь автоматическим сканерам;</li>
+              <li><i class="bi bi-check"></i> название сайта, логин и пароль администратора.</li>
+            </ul>
+            <p>Мастер сам создаст <code>wp-config.php</code>. Если он этого не сделал — скопируйте <code>wp-config-sample.php</code>, переименуйте и заполните четыре константы: <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code>, <code>DB_HOST</code>.</p>
+
+            <h3>Шаг 3. Первые настройки</h3>
+            <p>Зайдите в админку по адресу <code>/wp-admin/</code> и пройдитесь по пунктам:</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Настройки → Постоянные ссылки.</b> Выберите «Название записи». Адреса вида <code>?p=123</code> плохо индексируются.</li>
+              <li><i class="bi bi-check"></i> <b>Настройки → Общие.</b> Язык, название сайта, краткое описание.</li>
+              <li><i class="bi bi-check"></i> <b>Настройки → Чтение.</b> Снимите галочку «Показывать на главной последние записи», если главная — статичная страница.</li>
+              <li><i class="bi bi-check"></i> <b>Пользователи.</b> Смените отображаемое имя, если оно совпадает с логином: по нему вычисляют логин администратора.</li>
+            </ul>
+
+            <h3>Шаг 4. Обязательный минимум плагинов</h3>
+            <p>Кэширование, SEO, формы, резервное копирование, защита от спама. Пять плагинов — достаточно. Каждый следующий увеличивает вес и риск конфликта при обновлении.</p>
+
+            <h3>Шаг 5. HTTPS и файлы</h3>
+            <p>Включите бесплатный сертификат в панели хостинга, затем в настройках сайта укажите адрес с <code>https://</code>. Права на файлы: папки <code>755</code>, файлы <code>644</code>, на <code>wp-config.php</code> — <code>600</code>.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>«Ошибка установки соединения с базой».</b> Неверный <code>DB_HOST</code>: у многих хостингов это не <code>localhost</code>, а отдельный адрес из панели.</li>
+              <li><i class="bi bi-check"></i> <b>Сайт открывается по старому адресу.</b> Адрес зашит в базе: поправьте <code>siteurl</code> и <code>home</code> в таблице настроек.</li>
+              <li><i class="bi bi-check"></i> <b>Логин admin.</b> Самая частая причина взлома. Смените логин и включите двухфакторную авторизацию.</li>
+            </ul>
+
+            <h3>Нужен сайт на WordPress, а не статья?</h3>
+            <p>Поставлю и настрою: хостинг, тема, структура, наполнение, SEO, скорость и защита. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">WordPress с нуля</a>, <a href="../html/index.html">примеры HTML</a>, <a href="../django/index.html">про Django</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

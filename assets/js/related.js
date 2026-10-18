@@ -22,7 +22,12 @@
     { u: "/react/ustanovka.html", t: "Установка React и Vite" },
     { u: "/react/hooks.html", t: "React Hooks: useState и useEffect" },
     { u: "/react/components-props.html", t: "Компоненты и props в React" },
-    { u: "/react/vs-vue.html", t: "React или Vue" }
+    { u: "/react/vs-vue.html", t: "React или Vue" },
+    { u: "/wordpress/", t: "WordPress с нуля" },
+    { u: "/wordpress/ustanovka.html", t: "Установка WordPress на хостинг" },
+    { u: "/wordpress/plugins.html", t: "Плагины WordPress" },
+    { u: "/wordpress/skorost.html", t: "Как ускорить WordPress" },
+    { u: "/wordpress/bezopasnost.html", t: "Защита WordPress от взлома" }
   ];
 
   var host = document.querySelector(".about-content");
