@@ -24,40 +24,53 @@
         <li class="dropdown">
           <a href="#"><span>БЛОГ</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><h6 class="dropdown-header">HTML</h6></li>
-            <li><a href="{{ '/html/index.html' | relative_url }}">Разметка и ошибки</a></li>
-            <li><a href="{{ '/html/whatsapp.html' | relative_url }}">Виджет WhatsApp</a></li>
-            <li><h6 class="dropdown-header">CSS</h6></li>
-            <li><a href="{{ '/blogcss/index.html' | relative_url }}">CSS в примерах</a></li>
-            <li><a href="{{ '/blogcss/button.html' | relative_url }}">Кнопка на CSS</a></li>
-            <li><a href="{{ '/blogcss/examples.html' | relative_url }}">CSS-анимация</a></li>
-            <li><h6 class="dropdown-header">Django</h6></li>
-            <li><a href="{{ '/django/index.html' | relative_url }}">Что это и с чего начать</a></li>
-            <li><a href="{{ '/django/ustanovka.html' | relative_url }}">Установка на Windows</a></li>
-            <li><a href="{{ '/django/models-i-orm.html' | relative_url }}">Модели и ORM</a></li>
-            <li><a href="{{ '/django/views-i-urls.html' | relative_url }}">Views и URL</a></li>
-            <li><a href="{{ '/django/deploy.html' | relative_url }}">Деплой на VPS</a></li>
-            <li><h6 class="dropdown-header">JavaScript</h6></li>
-            <li><a href="{{ '/javascript/index.html' | relative_url }}">JS с нуля</a></li>
-            <li><a href="{{ '/javascript/peremennye.html' | relative_url }}">Переменные</a></li>
-            <li><a href="{{ '/javascript/funkcii.html' | relative_url }}">Функции</a></li>
-            <li><a href="{{ '/javascript/massivy.html' | relative_url }}">Массивы</a></li>
-            <li><a href="{{ '/javascript/dom.html' | relative_url }}">DOM и события</a></li>
-            <li><a href="{{ '/javascript/async-await.html' | relative_url }}">Async и await</a></li>
-            <li><h6 class="dropdown-header">React</h6></li>
-            <li><a href="{{ '/react/index.html' | relative_url }}">React с нуля</a></li>
-            <li><a href="{{ '/react/ustanovka.html' | relative_url }}">Установка и Vite</a></li>
-            <li><a href="{{ '/react/hooks.html' | relative_url }}">Хуки</a></li>
-            <li><a href="{{ '/react/components-props.html' | relative_url }}">Компоненты и props</a></li>
-            <li><a href="{{ '/react/vs-vue.html' | relative_url }}">React или Vue</a></li>
-            <li><h6 class="dropdown-header">WordPress</h6></li>
-            <li><a href="{{ '/wordpress/index.html' | relative_url }}">WordPress с нуля</a></li>
-            <li><a href="{{ '/wordpress/ustanovka.html' | relative_url }}">Установка</a></li>
-            <li><a href="{{ '/wordpress/plugins.html' | relative_url }}">Плагины</a></li>
-            <li><a href="{{ '/wordpress/skorost.html' | relative_url }}">Ускорение</a></li>
-            <li><a href="{{ '/wordpress/bezopasnost.html' | relative_url }}">Защита от взлома</a></li>
-            <li><h6 class="dropdown-header">Видео</h6></li>
-            <li><a href="{{ '/video/index.html' | relative_url }}">Мои работы</a></li>
+            <li class="dropdown-submenu"><a href="{{ '/html/index.html' | relative_url }}">HTML</a>
+              <ul>
+                <li><a href="{{ '/html/index.html' | relative_url }}">Разметка и ошибки</a></li>
+                <li><a href="{{ '/html/whatsapp.html' | relative_url }}">Виджет WhatsApp</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a href="{{ '/blogcss/index.html' | relative_url }}">CSS</a>
+              <ul>
+                <li><a href="{{ '/blogcss/index.html' | relative_url }}">CSS в примерах</a></li>
+                <li><a href="{{ '/blogcss/button.html' | relative_url }}">Кнопка на CSS</a></li>
+                <li><a href="{{ '/blogcss/examples.html' | relative_url }}">CSS-анимация</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a href="{{ '/django/index.html' | relative_url }}">Django</a>
+              <ul>
+                <li><a href="{{ '/django/ustanovka.html' | relative_url }}">Установка на Windows</a></li>
+                <li><a href="{{ '/django/models-i-orm.html' | relative_url }}">Модели и ORM</a></li>
+                <li><a href="{{ '/django/views-i-urls.html' | relative_url }}">Views и URL</a></li>
+                <li><a href="{{ '/django/deploy.html' | relative_url }}">Деплой на VPS</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a href="{{ '/javascript/index.html' | relative_url }}">JavaScript</a>
+              <ul>
+                <li><a href="{{ '/javascript/peremennye.html' | relative_url }}">Переменные</a></li>
+                <li><a href="{{ '/javascript/funkcii.html' | relative_url }}">Функции</a></li>
+                <li><a href="{{ '/javascript/massivy.html' | relative_url }}">Массивы</a></li>
+                <li><a href="{{ '/javascript/dom.html' | relative_url }}">DOM и события</a></li>
+                <li><a href="{{ '/javascript/async-await.html' | relative_url }}">Async и await</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a href="{{ '/react/index.html' | relative_url }}">React</a>
+              <ul>
+                <li><a href="{{ '/react/ustanovka.html' | relative_url }}">Установка и Vite</a></li>
+                <li><a href="{{ '/react/hooks.html' | relative_url }}">Хуки</a></li>
+                <li><a href="{{ '/react/components-props.html' | relative_url }}">Компоненты и props</a></li>
+                <li><a href="{{ '/react/vs-vue.html' | relative_url }}">React или Vue</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a href="{{ '/wordpress/index.html' | relative_url }}">WordPress</a>
+              <ul>
+                <li><a href="{{ '/wordpress/ustanovka.html' | relative_url }}">Установка</a></li>
+                <li><a href="{{ '/wordpress/plugins.html' | relative_url }}">Плагины</a></li>
+                <li><a href="{{ '/wordpress/skorost.html' | relative_url }}">Ускорение</a></li>
+                <li><a href="{{ '/wordpress/bezopasnost.html' | relative_url }}">Защита от взлома</a></li>
+              </ul>
+            </li>
+            <li><a href="{{ '/video/index.html' | relative_url }}">Видео</a></li>
           </ul>
         </li>
         <li><a class="nav-link{{ sc }}" href="{{ hp }}#contact">КОНТАКТЫ</a></li>

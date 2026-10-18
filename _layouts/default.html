@@ -48,25 +48,39 @@
     /* Прелоадер: +50% к прежней анимации (0.12s -> 0.18s) */
     #preloader { transition-duration: .18s !important; }
 
-    /* Меню блога: статьи по разделам, три колонки на десктопе */
+    /* Вложенное выпадающее меню блога */
     @media (min-width: 992px) {
-      #navbar .dropdown > ul {
-        columns: 3;
-        column-gap: 18px;
-        min-width: 640px;
+      #navbar .dropdown li.dropdown-submenu { position: relative; }
+      #navbar .dropdown li.dropdown-submenu > a::after {
+        content: "\203A";
+        float: right;
+        margin-left: 12px;
+        opacity: .55;
       }
-      #navbar .dropdown > ul > li { break-inside: avoid; }
-    }
-    #navbar .dropdown-header {
-      padding: 6px 12px 2px;
-      margin: 0;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      opacity: .65;
+      #navbar .dropdown li.dropdown-submenu > ul {
+        display: none;
+        position: absolute;
+        top: -8px;
+        left: 100%;
+        min-width: 230px;
+        margin: 0;
+        padding: 8px 0;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .14);
+        z-index: 1000;
+      }
+      #navbar .dropdown li.dropdown-submenu:hover > ul,
+      #navbar .dropdown li.dropdown-submenu:focus-within > ul { display: block; }
     }
     @media (max-width: 991px) {
-      #navbar .dropdown-header { padding: 12px 0 4px; margin-top: 4px; }
+      #navbar .dropdown li.dropdown-submenu > ul {
+        position: static;
+        display: block;
+        box-shadow: none;
+        padding-left: 16px;
+      }
+      #navbar .dropdown li.dropdown-submenu > a::after { content: none; }
     }
 
     /* Плавное появление и исчезновение мобильного меню.
