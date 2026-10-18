@@ -45,8 +45,8 @@
     .about-content ol{padding-left:22px}
     .about-content ol li{margin-bottom:8px}
 
-    /* Прелоадер: анимация короче на ~80% (было ~0.6s) */
-    #preloader { transition-duration: .12s !important; }
+    /* Прелоадер: +50% к прежней анимации (0.12s -> 0.18s) */
+    #preloader { transition-duration: .18s !important; }
 
     /* Плавное появление и исчезновение мобильного меню.
        Анимируем только список ссылок: кнопка-гамбургер лежит внутри #navbar
@@ -104,7 +104,7 @@
       if (pre) {
         setTimeout(function () {
           if (pre.parentNode) { pre.remove(); }
-        }, 120);
+        }, 180);
       }
     });
   </script>
