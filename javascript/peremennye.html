@@ -1,0 +1,91 @@
+---
+layout: default
+title: Переменные в JavaScript: let, const и var — majorsky.ru
+description: Чем let отличается от const и почему var устарел. Область видимости, поднятие, мутация объектов и массивов — с примерами и типичными ошибками.
+permalink: /javascript/peremennye.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ПЕРЕМЕННЫЕ <span>В JAVASCRIPT</span></h1>
+          <h2>LET, CONST И VAR</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Переменные в JavaScript">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Переменные в JavaScript</h2>
+        <p>Область видимости и мутация</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Три способа объявить переменную</h3>
+            <p>В современном JavaScript используются <code>const</code> и <code>let</code>. <code>var</code> остался в старом коде и в новых проектах не нужен — ниже объясню почему.</p>
+            <p class="ex">const name = "Сергей";<br>let count = 0;<br>count = count + 1; // можно</p>
+
+            <h3>const против let</h3>
+            <p><code>const</code> запрещает переприсваивание, <code>let</code> разрешает. Правило простое: по умолчанию пишите <code>const</code>, а на <code>let</code> меняйте только тогда, когда значение действительно меняется — счётчик цикла, аккумулятор, результат поиска.</p>
+            <p>Важно: <code>const</code> не делает объект неизменяемым. Ссылку переписать нельзя, а содержимое — можно:</p>
+            <p class="ex">const user = { name: "Анна" };<br>user.name = "Мария";   // работает<br>user = {};             // ошибка</p>
+
+            <h3>Область видимости</h3>
+            <p><code>let</code> и <code>const</code> видны только внутри блока, где объявлены — в фигурных скобках:</p>
+            <p class="ex">if (true) {<br>&nbsp;&nbsp;let local = 1;<br>}<br>console.log(local); // ReferenceError</p>
+            <p><code>var</code> игнорирует блок и виден во всей функции. Из-за этого переменная из цикла «протекает» наружу, и ошибку потом ищут часами.</p>
+
+            <h3>Поднятие (hoisting)</h3>
+            <p><code>var</code> поднимается в начало функции и на момент обращения равен <code>undefined</code>. <code>let</code> и <code>const</code> тоже поднимаются, но до объявления находятся в «мёртвой зоне» и дают <code>ReferenceError</code> — это лучше, потому что ошибка видна сразу, а не превращается в тихий <code>undefined</code>.</p>
+
+            <h3>Типы значений</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Примитивы</b> — строка, число, булево, <code>null</code>, <code>undefined</code>, <code>symbol</code>, <code>bigint</code>. Копируются по значению.</li>
+              <li><i class="bi bi-check"></i> <b>Объекты и массивы</b> — копируются по ссылке. Две переменные могут указывать на один объект.</li>
+              <li><i class="bi bi-check"></i> Проверить тип: <code>typeof value</code>. Для массивов используйте <code>Array.isArray()</code>.</li>
+            </ul>
+
+            <h3>Копирование объектов</h3>
+            <p>Чтобы получить независимую копию, используют оператор расширения. Но он делает поверхностную копию: вложенные объекты остаются общими.</p>
+            <p class="ex">const copy = { ...user, age: 30 };<br>const arr2 = [...arr];</p>
+            <p>Для глубокого копирования — <code>structuredClone(obj)</code> в современных браузерах.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Объявление через var по привычке.</b> Теряется блочная область видимости, появляются случайные глобальные переменные.</li>
+              <li><i class="bi bi-check"></i> <b>Уверенность, что const защищает объект.</b> Защищает только ссылку.</li>
+              <li><i class="bi bi-check"></i> <b>Мутация при копировании.</b> <code>const copy = user</code> — это не копия, а второе имя того же объекта.</li>
+              <li><i class="bi bi-check"></i> <b>Неявные глобальные переменные.</b> Присваивание без объявления создаёт переменную в глобальной области и ломает изоляцию.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу фронтенд без лишних зависимостей: интерактив, формы, запросы к API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">JavaScript с нуля</a>, <a href="../react/index.html">про React</a>, <a href="../html/index.html">примеры HTML</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

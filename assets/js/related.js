@@ -27,7 +27,13 @@
     { u: "/wordpress/ustanovka.html", t: "Установка WordPress на хостинг" },
     { u: "/wordpress/plugins.html", t: "Плагины WordPress" },
     { u: "/wordpress/skorost.html", t: "Как ускорить WordPress" },
-    { u: "/wordpress/bezopasnost.html", t: "Защита WordPress от взлома" }
+    { u: "/wordpress/bezopasnost.html", t: "Защита WordPress от взлома" },
+    { u: "/javascript/", t: "JavaScript с нуля" },
+    { u: "/javascript/peremennye.html", t: "Переменные: let, const, var" },
+    { u: "/javascript/funkcii.html", t: "Функции и замыкания" },
+    { u: "/javascript/massivy.html", t: "Методы массивов" },
+    { u: "/javascript/dom.html", t: "DOM и события" },
+    { u: "/javascript/async-await.html", t: "Промисы и async/await" }
   ];
 
   var host = document.querySelector(".about-content");

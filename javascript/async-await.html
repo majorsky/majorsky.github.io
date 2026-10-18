@@ -1,0 +1,81 @@
+---
+layout: default
+title: Промисы и async/await в JavaScript — majorsky.ru
+description: Как работает асинхронный код: Promise, then, catch, async/await, fetch и обработка ошибок. Примеры запросов к API и типичные ловушки.
+permalink: /javascript/async-await.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ASYNC <span>И AWAIT</span></h1>
+          <h2>ПРОМИСЫ И ЗАПРОСЫ К API</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Промисы и async await">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Промисы и async/await</h2>
+        <p>Асинхронность без ада колбэков</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Зачем это нужно</h3>
+            <p>Запрос к серверу занимает время. Если ждать его синхронно, страница замёрзнет. Поэтому JavaScript не ждёт: он получает промис — обещание вернуть результат позже.</p>
+
+            <h3>Promise в трёх состояниях</h3>
+            <p>Промис либо ждёт (<code>pending</code>), либо выполнен (<code>fulfilled</code>), либо отклонён (<code>rejected</code>). Обработка — через <code>then</code> и <code>catch</code>:</p>
+            <p class="ex">fetch("/api/posts")<br>&nbsp;&nbsp;.then(res =&gt; res.json())<br>&nbsp;&nbsp;.then(data =&gt; console.log(data))<br>&nbsp;&nbsp;.catch(err =&gt; console.error(err));</p>
+
+            <h3>async/await — тот же промис, читается проще</h3>
+            <p class="ex">async function load() {<br>&nbsp;&nbsp;try {<br>&nbsp;&nbsp;&nbsp;&nbsp;const res = await fetch("/api/posts");<br>&nbsp;&nbsp;&nbsp;&nbsp;if (!res.ok) throw new Error(res.status);<br>&nbsp;&nbsp;&nbsp;&nbsp;return await res.json();<br>&nbsp;&nbsp;} catch (e) {<br>&nbsp;&nbsp;&nbsp;&nbsp;console.error("Не загрузилось", e);<br>&nbsp;&nbsp;}<br>}</p>
+            <p><code>await</code> приостанавливает только текущую функцию, а не страницу. <code>async</code> гарантирует, что функция вернёт промис — даже если внутри обычный <code>return</code>.</p>
+
+            <h3>fetch не падает на 404</h3>
+            <p>Это самая частая ловушка. <code>fetch</code> отклоняет промис только при сетевой ошибке. Ответ <code>404</code> или <code>500</code> — это успешно полученный ответ, и <code>catch</code> не сработает. Проверяйте <code>res.ok</code> вручную.</p>
+
+            <h3>Параллельные запросы</h3>
+            <p>Последовательные <code>await</code> складывают время: два запроса по секунде дадут две секунды. Если они независимы — запускайте вместе:</p>
+            <p class="ex">const [user, posts] = await Promise.all([<br>&nbsp;&nbsp;fetch("/api/user").then(r =&gt; r.json()),<br>&nbsp;&nbsp;fetch("/api/posts").then(r =&gt; r.json())<br>]);</p>
+            <p><code>Promise.all</code> падает, если хотя бы один запрос не удался. <code>Promise.allSettled</code> дождётся всех и вернёт статусы — удобно, когда часть данных не критична.</p>
+
+            <h3>Типичные ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Забытый await.</b> Получаете промис вместо данных и печатаете <code>[object Promise]</code>.</li>
+              <li><i class="bi bi-check"></i> <b>await в forEach.</b> Колбэк не ждётся; для последовательности нужен <code>for...of</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Нет обработки ошибок.</b> Необработанный reject валит консоль и оставляет интерфейс пустым.</li>
+              <li><i class="bi bi-check"></i> <b>Запрос без отмены.</b> Пользователь ушёл со страницы, а ответ пришёл — нужен <code>AbortController</code>.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу фронтенд без лишних зависимостей: интерактив, формы, запросы к API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">JavaScript с нуля</a>, <a href="./dom.html">DOM и события</a>, <a href="../react/hooks.html">хуки React</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

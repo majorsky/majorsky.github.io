@@ -1,0 +1,89 @@
+---
+layout: default
+title: JavaScript с нуля: что это и как начать — majorsky.ru
+description: JavaScript — язык, который оживляет сайты. Разбираю, где он работает, что нужно знать в первую очередь, как устроен DOM и с чего начать без фреймворков.
+permalink: /javascript/
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>ПРО <span>JAVASCRIPT</span></h1>
+          <h2>ЧТО ЭТО И КАК НАЧАТЬ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="JavaScript — язык для браузера">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>JavaScript с нуля</h2>
+        <p>Синтаксис, DOM, план изучения</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Что такое JavaScript</h3>
+            <p>JavaScript — язык программирования, который выполняется в браузере. HTML отвечает за структуру, CSS за вид, а JavaScript — за поведение: реакцию на клик, проверку формы, подгрузку данных без перезагрузки страницы.</p>
+            <p>Сегодня он работает не только в браузере: на Node.js пишут серверы, на React Native — мобильные приложения, на Electron — десктопные программы. Один язык закрывает почти весь стек.</p>
+
+            <h3>Где подключать</h3>
+            <p>Скрипт подключается тегом <code>script</code>. Ставьте его перед закрывающим <code>body</code> или добавляйте <code>defer</code>, чтобы не тормозить отрисовку страницы.</p>
+            <p class="ex">&lt;script src="app.js" defer&gt;&lt;/script&gt;</p>
+
+            <h3>Основы, без которых не двинуться</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Переменные</b> — <code>let</code> для изменяемых, <code>const</code> для постоянных. <code>var</code> устарел.</li>
+              <li><i class="bi bi-check"></i> <b>Типы</b> — строка, число, булево, объект, массив, <code>null</code> и <code>undefined</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Функции</b> — обычные и стрелочные: <code>const f = (x) =&gt; x * 2</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Условия и циклы</b> — <code>if</code>, <code>for</code>, <code>for...of</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Массивы</b> — <code>map</code>, <code>filter</code>, <code>find</code>, <code>reduce</code>.</li>
+              <li><i class="bi bi-check"></i> <b>Объекты</b> — доступ через точку и деструктуризация: <code>const { name } = user</code>.</li>
+            </ul>
+
+            <h3>DOM: доступ к странице</h3>
+            <p>DOM — это дерево элементов страницы. Через него скрипт читает и меняет разметку:</p>
+            <p class="ex">const btn = document.querySelector(".btn");<br>btn.addEventListener("click", () =&gt; {<br>&nbsp;&nbsp;btn.textContent = "Готово";<br>});</p>
+            <p>Частая ошибка новичка — получить элемент до того, как он появился в документе. Скрипт со <code>defer</code> или вызов внутри <code>DOMContentLoaded</code> решает проблему.</p>
+
+            <h3>Асинхронность</h3>
+            <p>Запросы к серверу занимают время, но не должны блокировать страницу. Отсюда <code>Promise</code> и <code>async/await</code>:</p>
+            <p class="ex">async function load() {<br>&nbsp;&nbsp;const res = await fetch("/api/posts");<br>&nbsp;&nbsp;const data = await res.json();<br>&nbsp;&nbsp;console.log(data);<br>}</p>
+            <p>Без понимания промисов дальше двигаться бесполезно: почти любой современный код их использует.</p>
+
+            <h3>План изучения</h3>
+            <p>Порядок, который работает: синтаксис и типы, функции и массивы, DOM и события, промисы и запросы, модули, затем инструменты — npm, сборщик, git. Фреймворк — в конце, когда язык уже понимается.</p>
+            <p>Практика обязательна: калькулятор, список задач, погода через API. Каждый проект маленький, но законченный — так видны ошибки и растёт скорость.</p>
+
+            <h3>Когда фреймворк не нужен</h3>
+            <p>Для меню, слайдера, маски телефона и валидации формы хватает 50–100 строк ванильного JavaScript. React или Vue добавляют сборку, зависимости и вес — это оправдано на больших интерфейсах, но не на лендинге.</p>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу фронтенд без лишних библиотек: интерактив, формы, интеграции с API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="../react/index.html">про React</a>, <a href="../html/index.html">примеры HTML</a>, <a href="../blogcss/index.html">примеры CSS</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

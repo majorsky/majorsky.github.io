@@ -1,0 +1,91 @@
+---
+layout: default
+title: DOM в JavaScript: выбор элементов и события — majorsky.ru
+description: Как работать с DOM: querySelector, изменение текста и классов, создание элементов, addEventListener и делегирование событий. Примеры кода и ошибки.
+permalink: /javascript/dom.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>DOM <span>В JAVASCRIPT</span></h1>
+          <h2>ЭЛЕМЕНТЫ И СОБЫТИЯ</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Работа с DOM в JavaScript">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>DOM и события</h2>
+        <p>От поиска элемента до делегирования</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Что такое DOM</h3>
+            <p>Браузер превращает HTML в дерево объектов — DOM. Каждый тег становится узлом, у которого есть свойства и методы. JavaScript читает и меняет это дерево, а браузер перерисовывает страницу.</p>
+
+            <h3>Выбор элементов</h3>
+            <p class="ex">const one = document.querySelector(".card");<br>const all = document.querySelectorAll(".card");</p>
+            <p><code>querySelector</code> возвращает первый подходящий элемент или <code>null</code>. <code>querySelectorAll</code> — коллекцию (NodeList), по ней можно пройтись <code>forEach</code>, но не <code>map</code>. Старые методы <code>getElementById</code> и <code>getElementsByClassName</code> работают, но единый синтаксис с CSS-селекторами читается проще.</p>
+
+            <h3>Чтение и изменение</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> Текст: <code>el.textContent</code> — безопасно, вставляет как текст.</li>
+              <li><i class="bi bi-check"></i> HTML: <code>el.innerHTML</code> — опасно при пользовательских данных, это XSS.</li>
+              <li><i class="bi bi-check"></i> Классы: <code>el.classList.add("active")</code>, <code>toggle</code>, <code>remove</code>.</li>
+              <li><i class="bi bi-check"></i> Атрибуты: <code>el.setAttribute("aria-expanded", "true")</code>.</li>
+              <li><i class="bi bi-check"></i> Стили: <code>el.style.display = "none"</code> — лучше через класс, а не инлайн.</li>
+            </ul>
+
+            <h3>Создание элементов</h3>
+            <p class="ex">const li = document.createElement("li");<br>li.textContent = "Новый пункт";<br>list.append(li);</p>
+            <p>Для нескольких элементов собирайте их в <code>DocumentFragment</code> и вставляйте один раз — иначе браузер пересчитает вёрстку на каждой вставке.</p>
+
+            <h3>События</h3>
+            <p class="ex">btn.addEventListener("click", (e) =&gt; {<br>&nbsp;&nbsp;e.preventDefault();<br>&nbsp;&nbsp;console.log("нажато");<br>});</p>
+            <p>Частые события: <code>click</code>, <code>input</code>, <code>change</code>, <code>submit</code>, <code>keydown</code>, <code>scroll</code>. Для отправки формы слушайте <code>submit</code> на форме, а не <code>click</code> на кнопке — тогда работает и отправка с клавиатуры.</p>
+
+            <h3>Делегирование</h3>
+            <p>Вместо обработчика на каждой кнопке — один на контейнере. Событие всплывает, и по <code>e.target</code> видно, что именно нажали:</p>
+            <p class="ex">list.addEventListener("click", (e) =&gt; {<br>&nbsp;&nbsp;const item = e.target.closest("li");<br>&nbsp;&nbsp;if (item) item.classList.toggle("done");<br>});</p>
+            <p>Это работает и для элементов, добавленных позже — их обработчики подключать не нужно.</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Элемент ещё не существует.</b> Скрипт без <code>defer</code> в <code>head</code> получает <code>null</code>.</li>
+              <li><i class="bi bi-check"></i> <b>innerHTML с пользовательским вводом.</b> Прямой путь к XSS.</li>
+              <li><i class="bi bi-check"></i> <b>Обработчик внутри цикла.</b> Создаёт десятки функций; делегирование дешевле.</li>
+              <li><i class="bi bi-check"></i> <b>Забытый preventDefault.</b> Форма перезагружает страницу, и скрипт «не срабатывает».</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу фронтенд без лишних зависимостей: интерактив, формы, запросы к API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">JavaScript с нуля</a>, <a href="./massivy.html">методы массивов</a>, <a href="../html/index.html">примеры HTML</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

@@ -1,0 +1,96 @@
+---
+layout: default
+title: Методы массивов в JavaScript: map, filter, reduce — majorsky.ru
+description: Как работать с массивами в JavaScript: map, filter, reduce, find, sort, includes. Что мутирует исходный массив, а что возвращает новый — с примерами.
+permalink: /javascript/massivy.html
+---
+
+{% raw %}
+<section id="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>МЕТОДЫ <span>МАССИВОВ</span></h1>
+          <h2>MAP, FILTER, REDUCE</h2>
+          <div class="text-center text-lg-start">
+            <a href="#article" class="btn-get-started scrollto">ЧИТАТЬ СТАТЬЮ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="../assets/img/msky-code.png" class="img-fluid animated" alt="Методы массивов в JavaScript">
+      </div>
+    </div>
+  </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+    <g class="wave1"><use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"/></g>
+    <g class="wave2"><use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"/></g>
+    <g class="wave3"><use xlink:href="#wave-path" x="50" y="9" fill="#fff"/></g>
+  </svg>
+</section>
+
+<main id="main">
+  <section id="article" class="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Методы массивов</h2>
+        <p>Что возвращает и что меняет</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="about-content" data-aos="fade-up">
+            <h3>Главное различие</h3>
+            <p>Часть методов возвращает новый массив, часть меняет исходный. Путаница между ними — источник половины ошибок: вы ждёте копию, а получаете изменённые данные.</p>
+            <p>Не мутируют: <code>map</code>, <code>filter</code>, <code>slice</code>, <code>concat</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>reduce</code>. Мутируют: <code>push</code>, <code>pop</code>, <code>shift</code>, <code>unshift</code>, <code>splice</code>, <code>sort</code>, <code>reverse</code>.</p>
+
+            <h3>map — преобразовать каждый элемент</h3>
+            <p class="ex">const prices = [100, 200, 300];<br>const withVat = prices.map(p =&gt; p * 1.2);<br>// [120, 240, 360]</p>
+            <p>Длина результата всегда равна исходной. Если нужно отфильтровать — это <code>filter</code>.</p>
+
+            <h3>filter — оставить подходящие</h3>
+            <p class="ex">const published = posts.filter(p =&gt; p.isPublished);</p>
+            <p>Колбэк возвращает <code>true</code> или <code>false</code>. Возврат объекта вместо булева значения — частая ошибка: пустой объект считается истинным, и в выборку попадает всё.</p>
+
+            <h3>reduce — свернуть в одно значение</h3>
+            <p class="ex">const total = prices.reduce((sum, p) =&gt; sum + p, 0);</p>
+            <p>Второй параметр — начальное значение. Всегда передавайте его явно: без него на пустом массиве будет ошибка, а на массиве объектов результат окажется неожиданным.</p>
+
+            <h3>Поиск и проверки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <code>find</code> — первый подходящий элемент или <code>undefined</code>.</li>
+              <li><i class="bi bi-check"></i> <code>findIndex</code> — его индекс или <code>-1</code>.</li>
+              <li><i class="bi bi-check"></i> <code>some</code> — есть ли хотя бы один подходящий.</li>
+              <li><i class="bi bi-check"></i> <code>every</code> — все ли подходят.</li>
+              <li><i class="bi bi-check"></i> <code>includes</code> — есть ли конкретное значение.</li>
+            </ul>
+
+            <h3>Сортировка</h3>
+            <p><code>sort</code> по умолчанию сравнивает как строки: <code>[10, 9, 100].sort()</code> даст <code>[10, 100, 9]</code>. Нужна функция сравнения:</p>
+            <p class="ex">const sorted = [...items].sort((a, b) =&gt; a.price - b.price);</p>
+            <p>Копия через <code>[...items]</code> важна: <code>sort</code> мутирует исходный массив.</p>
+
+            <h3>Цепочки</h3>
+            <p>Методы возвращают массив, поэтому их можно соединять. Цепочка читается сверху вниз, если каждый шаг короткий:</p>
+            <p class="ex">const names = users<br>&nbsp;&nbsp;.filter(u =&gt; u.active)<br>&nbsp;&nbsp;.map(u =&gt; u.name)<br>&nbsp;&nbsp;.slice(0, 10);</p>
+
+            <h3>Частые ошибки</h3>
+            <ul>
+              <li><i class="bi bi-check"></i> <b>Забытый return в map.</b> Стрелочная с фигурными скобками без <code>return</code> даёт массив <code>undefined</code>.</li>
+              <li><i class="bi bi-check"></i> <b>map вместо forEach.</b> Если результат не используется, <code>map</code> только создаёт мусор.</li>
+              <li><i class="bi bi-check"></i> <b>Мутация при переборе.</b> <code>push</code> внутри <code>forEach</code> по тому же массиву ведёт к пропущенным элементам.</li>
+              <li><i class="bi bi-check"></i> <b>reduce без начального значения.</b> Падает на пустом массиве.</li>
+            </ul>
+
+            <h3>Нужен сайт, а не статья?</h3>
+            <p>Напишу фронтенд без лишних зависимостей: интерактив, формы, запросы к API. С 2009 года, по договору, с поддержкой после запуска.</p>
+            <p><a href="../index.html#contact" class="btn-get-started">ОБСУДИТЬ ПРОЕКТ</a></p>
+            <p>Полезно по теме: <a href="./index.html">JavaScript с нуля</a>, <a href="./funkcii.html">функции</a>, <a href="../react/index.html">про React</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endraw %}

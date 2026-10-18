@@ -132,4 +132,40 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/peremennye.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/funkcii.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/massivy.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/dom.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://majorsky.ru/javascript/async-await.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
