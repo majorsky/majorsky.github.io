@@ -43,12 +43,12 @@
 
   <!-- Некритичные стили: анимации, лайтбокс, карусель -->
   <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/aos/aos.css' | relative_url }}">
+  {% if page.url == '/' %}
   <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}">
   <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}">
+  {% endif %}
   <noscript>
     <link rel="stylesheet" href="{{ '/assets/vendor/aos/aos.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}">
   </noscript>
 
   <style>
@@ -147,11 +147,34 @@
   <a href="#majorsky" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/vendor/aos/aos.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}" defer></script>
+  {% if page.url == '/' %}
+  <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/vendor/glightbox/js/glightbox.min.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/vendor/swiper/swiper-bundle.min.js' | relative_url }}" defer></script>
+  {% else %}
+  <script>
+    /* На внутренних страницах карусели и лайтбокса нет, но main.js
+       обращается к ним напрямую — подставляем безопасные заглушки. */
+    (function () {
+      function noop() { return this; }
+      if (!window.Swiper) {
+        window.Swiper = function () {
+          return { on: noop, slideNext: noop, slidePrev: noop, slideTo: noop,
+                   update: noop, destroy: noop,
+                   autoplay: { start: noop, stop: noop, running: false } };
+        };
+      }
+      if (!window.GLightbox) {
+        window.GLightbox = function () {
+          return { on: noop, open: noop, close: noop, reload: noop, destroy: noop };
+        };
+      }
+      if (!window.PureCounter) { window.PureCounter = function () { return {}; }; }
+    })();
+  </script>
+  {% endif %}
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/related.js' | relative_url }}" defer></script>
 
