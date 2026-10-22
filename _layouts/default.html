@@ -25,18 +25,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://mc.yandex.ru">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Шрифты грузим асинхронно: текст рисуется сразу системным, затем подменяется -->
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;600&display=swap">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;600&display=swap">
+  </noscript>
 
   <!-- LCP: главная картинка начинает грузиться до парсинга CSS -->
   <link rel="preload" as="image" href="{{ '/assets/img/msky-code.png' | relative_url }}" fetchpriority="high">
 
-  <link href="{{ '/assets/vendor/aos/aos.css' | relative_url }}" rel="stylesheet">
   <link href="{{ '/assets/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
   <link href="{{ '/assets/vendor/bootstrap-icons/bootstrap-icons.css' | relative_url }}" rel="stylesheet">
   <link href="{{ '/assets/vendor/boxicons/css/boxicons.min.css' | relative_url }}" rel="stylesheet">
-  <link href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}" rel="stylesheet">
-  <link href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}" rel="stylesheet">
   <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+
+  <!-- Некритичные стили: анимации, лайтбокс, карусель -->
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/aos/aos.css' | relative_url }}">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}">
+  <noscript>
+    <link rel="stylesheet" href="{{ '/assets/vendor/aos/aos.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/vendor/swiper/swiper-bundle.min.css' | relative_url }}">
+  </noscript>
 
   <style>
     .about-content ul{list-style:none;padding-left:0;margin-left:0}
