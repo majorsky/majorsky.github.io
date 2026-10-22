@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://mc.yandex.ru">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- LCP: главная картинка начинает грузиться до парсинга CSS -->
   <link rel="preload" as="image" href="{{ '/assets/img/msky-code.png' | relative_url }}" fetchpriority="high">
@@ -134,13 +134,13 @@
   <a href="#majorsky" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Наверх"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
 
-  <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}"></script>
-  <script src="{{ '/assets/vendor/aos/aos.js' | relative_url }}"></script>
-  <script src="{{ '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}"></script>
-  <script src="{{ '/assets/vendor/glightbox/js/glightbox.min.js' | relative_url }}"></script>
-  <script src="{{ '/assets/vendor/swiper/swiper-bundle.min.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/related.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/purecounter/purecounter.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/vendor/aos/aos.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/vendor/glightbox/js/glightbox.min.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/vendor/swiper/swiper-bundle.min.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/related.js' | relative_url }}" defer></script>
 
   <script>
     /* Снимаем прелоадер по готовности DOM, а не после полной загрузки
